@@ -1,8 +1,9 @@
 package pt.ipp.isep.pprog_1nb_1171343_1161874_tp;
 
 /**
- * Esta classe permite a construção de uma hierarquia de classes para
- * representarem atletas profissionais.
+ * Representa um atleta profissional através do seu nome, número ID civil, género,
+ * idade, atividade, frequência cardíaca em repouso, valor mensal dos prémios
+ * arrecadados e valor da parcela fixa recebida mensalmente
  *
  * @author António (1171343) & João (1161874)
  */
@@ -45,12 +46,12 @@ public class AtletaProfissional extends Atleta implements CalcularIrs {
      * @param genero - género do atleta
      * @param idade - idade do atleta
      * @param atividade - atividade do atleta
-     * @param freqCardRepouso - frequencia cardiaca em repouso do atleta
+     * @param freqCardRepouso - frequência cardíaca em repouso do atleta
      * @param valorMensalPremios - valor mensal dos prémios arrecadados pelo atleta
      * @param valorParcelaFixa - Parcela fixa que cada atleta recebe mensalmente
      */
     public AtletaProfissional(String nome, int numIdCivil, String genero, int idade,
-            String atividade, int freqCardRepouso, float valorParcelaFixa, float valorMensalPremios) {
+            String atividade, int freqCardRepouso, float valorMensalPremios, float valorParcelaFixa) {
         super(nome, numIdCivil, genero, idade, atividade, freqCardRepouso, valorMensalPremios);
         this.valorParcelaFixa = valorParcelaFixa;
         contadorAtletaProfissional++;
@@ -98,7 +99,7 @@ public class AtletaProfissional extends Atleta implements CalcularIrs {
      *
      * @return quantidade de atletas profissionais
      */
-    public static int getcontadorAtletaProfissional() {
+    public static int getContadorAtletaProfissional() {
         return contadorAtletaProfissional;
     }
 

@@ -1,8 +1,9 @@
 package pt.ipp.isep.pprog_1nb_1171343_1161874_tp;
 
 /**
- * Esta classe permite a construção de uma hierarquia de classes para
- * representarem atletas Semiprofissionais.
+ * Representa um atleta semiprofissional através do seu nome, número ID civil, género,
+ * idade, atividade, frequência cardíaca em repouso, valor mensal dos prémios
+ * arrecadados e antiguidade no clube
  *
  * @author António (1171343) & João (1161874)
  */
@@ -35,7 +36,7 @@ public class AtletaSemiProfissional extends AtletaNaoProfissional implements Cal
      * @param genero - género do atleta
      * @param idade - idade do atleta
      * @param atividade - atividade do atleta
-     * @param freqCardRepouso - frequencia cardiaca em repouso do atleta
+     * @param freqCardRepouso - frequência cardíaca em repouso do atleta
      * @param valorMensalPremios - valor mensal dos prémios arrecadados pelo
      * atleta
      * @param antiguidade - antiguidade no clube

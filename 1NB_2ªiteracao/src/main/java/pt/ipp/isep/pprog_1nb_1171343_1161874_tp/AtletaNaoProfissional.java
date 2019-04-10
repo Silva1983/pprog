@@ -39,11 +39,11 @@ public abstract class AtletaNaoProfissional extends Atleta {
     }
 
     /**
-     * Inicializa o construtor atleta não profissional com o nome, número de identificação cívil,
+     * Inicializa o construtor atleta não profissional com o nome, número de identificação civil,
      *  género, idade, atividade, frequência cardíaca em repouso e antiguidade
      * 
      * @param nome - nome do atleta
-     * @param numIdCivil - número de identificação cívil do atleta
+     * @param numIdCivil - número de identificação civil do atleta
      * @param genero - género do atleta
      * @param idade - idade do atleta
      * @param atividade - atividade do atleta

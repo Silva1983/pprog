@@ -2,7 +2,6 @@ package pt.ipp.isep.pprog_1nb_1171343_1161874_tp;
 
 import pt.ipp.isep.biblioteca.Data;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -13,69 +12,79 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Data d1 = new Data(1893, 9, 28);
-
         ArrayList<Atleta> atletas = new ArrayList<>();
 
+        //a
+        ClubeDesportivo c1 = new ClubeDesportivo("FC Porto", new Data(1893, 9, 28), atletas);
+
+        //b
         atletas.add(new AtletaProfissional("João Pimentel", 14785289, "masculino", 34, "ciclismo", 60, 100, 250));
-        atletas.add(new AtletaProfissional("Juliana Rangel", 15236847, "feminino", 34, "natação", 70, 150, 500));
+        atletas.add(new AtletaProfissional("Juliana Rangel", 15236847, "feminino", 34, "natação", 70, 150, 300));
+        atletas.add(new AtletaProfissional("Sara Cunha", 12345678, "feminino", 26, "natação", 100, 250, 300));
         atletas.add(new AtletaSemiProfissional("António Silva", 25486319, "masculino", 36, "caminhada", 75, 200, 25));
         atletas.add(new AtletaSemiProfissional("Sara Gomes", 23654782, "feminino", 36, "ciclismo", 80, 150, 15));
-        atletas.add(new AtletaSemiProfissional("Maria Martins", 23654781, "feminino", 25, "corrida", 60, 100, 5));
-        atletas.add(new AtletaAmador("Miguel Sousa", 12365489, "masculino", 27, "corrida", 70, 10, 200));
-        atletas.add(new AtletaAmador("Pedro Pereira", 23145678, "masculino", 40, "caminhada", 75, 20, 100));
-        
-        //a
-        ClubeDesportivo c1 = new ClubeDesportivo("FC Porto", d1, atletas);
-        
-        //b
-        c1.adicionarAtleta(new AtletaProfissional ("Sara Cunha", 12345678, "feminino", 26, "natação", 100,250, 300));
-        c1.adicionarAtleta(new AtletaAmador("José António", 19185389, "masculino", 34, "corrida", 80, 75, 100));
-        c1.adicionarAtleta(new AtletaSemiProfissional ("Jose Sampaio", 87654321, "masculino", 35, "caminhada", 150, 100, 200));
-        
+        atletas.add(new AtletaSemiProfissional("Maria Martins", 23654781, "feminino", 25, "corrida", 60, 120, 5));
+        atletas.add(new AtletaAmador("Miguel Sousa", 12365489, "masculino", 27, "corrida", 70, 200, 10));
+        atletas.add(new AtletaAmador("Pedro Pereira", 23145678, "masculino", 40, "caminhada", 75, 170, 20));
+        atletas.add(new AtletaAmador("José António", 19185389, "masculino", 34, "corrida", 80, 100, 4));
+   
+        c1.setAtletas(atletas);
+
         //c
         //1.
-        System.out.println("\n### Nome do Clube: ### " + c1.getNome() + ": " + d1.toString());
-        
-        //2.
-        c1.adicionarAtleta(new AtletaSemiProfissional ("Ricardo Pereira", 826534521, "masculino", 35, "caminhada", 150, 100, 200));
-        //3.
-        System.out.println("### Lista ordenada alfabeticamente por nome ###");
-        System.out.println(c1.sortAtletas());
-        
-        //4.
-        System.out.println("### Lista ordenada inversamente pelo valor dos prémios ###");
-        System.out.println(c1.atletasPremioInversamente());
-        
-        //5.
-        
-        //6.
-        System.out.println("### Lista ordenada alfabeticamente por categoria, modalidade e nome ###");
-        System.out.println("");
-        
-        
-        /*System.out.println("\n### Atletas Armazenadas no ArrayList (foreach) ###");
-        listarForEach(atletas);
+        System.out.println(c1.toString() + "Fundado em: " + c1.getDataFundacao().toString() + "\n");
 
-        System.out.println("\n### Sorted ###\n");
+        //2.
+        c1.adicionarAtleta(new AtletaSemiProfissional("Ricardo Pereira", 826534521, "masculino", 35, "caminhada", 150, 100, 12));
+
+        //3.
+        System.out.println("### Lista de Atletas (ordenada alfabeticamente por nome) ###");
         listarForEach(c1.sortAtletas());
 
-        System.out.println("\n### Atletas Armazenadas no ArrayList (foreach) ###");
-        listarForEach(atletas);
+        //4.
+        System.out.println("\n### Lista de Atletas (ordenada inversamente pelo valor dos prémios) ###");
+        listarForEachPremio(c1.atletasPremioInversamente());
 
-        System.out.println(c1.getAtletas().get(0).getClass().getSimpleName());
-*/
+        //5.
+        System.out.println("\n### Valor Total IRS (todos os atletas) ###");
+        System.out.println(c1.calcularTotalIrs());
+
+        //6.
+        System.out.println("\n### Lista de Atletas (ordenada alfabeticamente por categoria, modalidade e nome) ###");
+        listarForEachNomeModalidade(c1.getOrdenadaCategoriaModalidadeNome());
+
     }
 
     // ### UTILITÁRIOS TP2 ##
-    
+    /**
+     * Listagem com o nome de todos os atletas
+     *
+     * @param lista - ArrayList
+     */
     private static void listarForEach(List<Atleta> lista) {
         for (Atleta atletas : lista) {
-            System.out.printf(atletas.toStringLista1());
+            System.out.printf(atletas.toNomeIdadeAtividadeString());
         }
     }
-}
 
+    /**
+     * Listagem com o nome e valor dos prémios de todos os atletas
+     *
+     * @param lista - ArrayList
+     */
+    private static void listarForEachPremio(List<Atleta> lista) {
+        for (Atleta atletas : lista) {
+            System.out.printf(atletas.toNomePremioString());
+        }
+    }
+
+    private static void listarForEachNomeModalidade(List<Atleta> lista) {
+        for (Atleta atletas : lista) {
+            System.out.printf(atletas.toNomeAtividadeString());
+        }
+    }
+
+}
 
 //    // ### TP1 - Main ###
 //    
@@ -110,7 +119,7 @@ public class Main {
 //         * d)
 //         */
 //        System.out.println("Quantidade de Atletas Amadores: " + AtletaAmador.getContadorAtletaAmador());
-//        System.out.println("Quantidade de Atletas Profissionais: " + AtletaProfissional.getcontadorAtletaProfissional());
+//        System.out.println("Quantidade de Atletas Profissionais: " + AtletaProfissional.getContadorAtletaProfissional());
 //
 //        /**
 //         * e)

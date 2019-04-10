@@ -102,175 +102,74 @@ public class ClubeDesportivo {
     }
 
     /**
-     * Ordena a lista de atletas do clube desportivo
+     * Insere uma nova lista de atletas
      *
-     * @return listaOrdenada - lista ordenada alfabeticamente
+     * @param novaListaAtletas
      */
-    public List<Atleta> sortAtletas() {
-        List<Atleta> listaOrdenada = this.getAtletas();
-        Collections.sort(listaOrdenada);
-        return listaOrdenada;
+    public void setAtletas(List<Atleta> novaListaAtletas) {
+        atletas = new ArrayList<>(novaListaAtletas);
     }
 
+    // 1.
     /**
-     * Modifica os elementos da lista Atleta
+     * Devolve o nome do fundação do clube
      *
-     * @param atletas
+     * @return nome
      */
-    public void setAtletas(List<Atleta> atletas) {
-        List<Atleta> copy = new ArrayList<>();
-        for (Atleta Atleta : atletas) {
-            copy.add(Atleta);
-        }
-        this.atletas = copy;
+    @Override
+    public String toString() {
+        return String.format("%nNome do Clube: %s%n", nome);
     }
 
     // 2.
     /**
-     * adicionar Atleta à lista
+     * Adiciona um atleta ao clube
      *
-     * @param atletas
+     * @param novoAtleta
      */
-    public void adicionarAtleta(Atleta atletas) {
-        
-        this.atletas.add(atletas);
-        
-    }
-
-    /**
-     * Remover atleta da lista não é pedido no enunciado
-     *
-     * @param atletas
-     */
-    public void removerAtleta(Atleta atletas) {
-        this.atletas.remove(atletas);
+    public void adicionarAtleta(Atleta novoAtleta) {
+        atletas.add(novoAtleta);
     }
 
     // 3.
     /**
-     * Devolve a lista ordenada por nome
+     * Ordena a lista de atletas do clube desportivo ordenada alfabeticamente
+     * por nome
      *
-     * @return sortedList - Lista ordenada por nome
+     * @return listaOrdenada - lista ordenada alfabeticamente por nome
      */
-    public List<Atleta> getAtletasOrdenadoNome() {
-        List<Atleta> sortedList = this.getAtletas();
-        Collections.sort(sortedList, new CompareByName());
-        return sortedList;
+    public List<Atleta> sortAtletas() {
+        List<Atleta> listaOrdenada = getAtletas();
+        Collections.sort(listaOrdenada);
+        return listaOrdenada;
     }
 
     // 4.
     /**
      * Devolve a lista ordenada por prémios inversamente
      *
-     * @return sortedList - Lista ordenada
+     * @return listaOrdenada
      */
     public List<Atleta> atletasPremioInversamente() {
-        List<Atleta> sortedList = this.getAtletas();
-        Collections.sort(sortedList, Collections.reverseOrder(new CompararPremioInversamente()));
-        return sortedList;
+        List<Atleta> listaOrdenada = getAtletas();
+        Collections.sort(listaOrdenada, Collections.reverseOrder(new CompararPremio()));
+        return listaOrdenada;
     }
 
     /**
-     * Calcular os prémios dos atletas Profissionais
-     *
-     * @return premios
+     * Classe com o critério para comparar os prémios
      */
-    public double calcularPremiosProfissional() {
-        double premios = 0;
-        for (Atleta atletas : getAtletas()) {
-            if (atletas instanceof AtletaProfissional) {
-                premios = premios + atletas.getValorMensalPremios();
-            }
-        }
-        return premios;
-    }
+    class CompararPremio implements Comparator<Atleta> {
 
-    /**
-     * Calcular premios dos atletas Amadoras
-     *
-     * @return premios
-     */
-    public double calcularPremiosAmador() {
-        double premios = 0;
-        for (Atleta atletas : getAtletas()) {
-            if (atletas instanceof AtletaAmador) {
-                premios = premios + atletas.getValorMensalPremios();
-            }
-        }
-        return premios;
-    }
-
-    /**
-     * Calcular premios dos atletas Semi Profissionais
-     *
-     * @return premios
-     */
-    public double calcularPremiosSemiProfissional() {
-        double premios = 0;
-        for (Atleta atletas : getAtletas()) {
-            if (atletas instanceof AtletaSemiProfissional) {
-                premios = premios + atletas.getValorMensalPremios();
-            }
-        }
-        return premios;
-    }
-
-    /**
-     * Calcular total dos valores prémios dos atletas
-     *
-     * @return total
-     */
-    public double calcularTotalValorPremios() {
-        double total = 0;
-        for (Atleta atletas : getAtletas()) {
-            total = total + atletas.getValorMensalPremios();
-        }
-        return total;
-    }
-
-    /**
-     * Devolve a quantidade e atletas
-     *
-     * @return atletas - quantidade de atletas
-     */
-    public int getQuantidadeAtletas() {
-        return atletas.size();
-    }
-
-    // 6.
-    /**
-     *
-     * @return
-     */
-    public List<Atleta> getOrdenadaCategoriaModalidadeNome() {
-        List<Atleta> ListaOrdenada = this.getAtletas();
-        Collections.sort(ListaOrdenada, new CompararCategoriaModalidadeNome());
-        return ListaOrdenada;
-    }
-
-    public ClubeDesportivo copia() {
-        return new ClubeDesportivo(getNome(), getDataFundacao(), getAtletas());
-    }
-
-    /**
-     * Class para comparar nomes Atleta usando Comparator
-     */
-    class CompareByName implements Comparator<Atleta> {
-
-        @Override
-        public int compare(Atleta a1, Atleta a2) {
-            if (a1.getClass() != a2.getClass()) {
-                return a1.getClass().toString().compareTo(a2.getClass().toString());
-            }
-            return a1.getNome().compareTo(a2.getNome());
-        }
-    }
-
-    /**
-     * Class para comparar prémios usando Comparator
-     */
-    class CompararPremioInversamente implements Comparator<Atleta> {
-
+        /**
+         * Compara o valor total mensal de prémios recebidos do atleta e do
+         * outro recebido por parâmetro
+         *
+         * @param a1 - atleta inicial
+         * @param a2 - atleta a ser compararado com o atleta inicial
+         * @return 1 (o valor do a1 é maior que do a2), -1 (o valor do a1 é
+         * menor que do a2) ou 0 (o valor do a1 é igual ao do a2)
+         */
         @Override
         public int compare(Atleta a1, Atleta a2) {
             if (a1.getValorMensalPremios() > a2.getValorMensalPremios()) {
@@ -283,23 +182,64 @@ public class ClubeDesportivo {
         }
     }
 
+    // 5.
     /**
-     * Class para comparar...
+     * Permite o cálculo do valor total do IRS a descontar da totalidade dos
+     * atletas sujeitos à taxa de IRS
+     *
+     * @return valor total do IRS da totalidade dos atletas
+     */
+    public float calcularTotalIrs() {
+        float total = 0;
+        CalcularIrs irs;
+        for (int i = 0; i < atletas.size(); i++) {
+            if (atletas.get(i) instanceof AtletaProfissional) {
+                total = total + ((AtletaProfissional) atletas.get(i)).calcularIrs();
+            }
+            if (atletas.get(i) instanceof AtletaSemiProfissional) {
+                total = total + ((AtletaSemiProfissional) atletas.get(i)).calcularIrs();
+            }
+        }
+        return total;
+    }
+
+    // 6.
+    /**
+     * Devolve a lista ordenada alfabeticamente por categoria, modalidade e nome
+     *
+     * @return listaOrdenada
+     */
+    public List<Atleta> getOrdenadaCategoriaModalidadeNome() {
+        List<Atleta> listaOrdenada = getAtletas();
+        Collections.sort(listaOrdenada, new CompararCategoriaModalidadeNome());
+        return listaOrdenada;
+    }
+
+    /**
+     * Classe com o critério para comparar alfabeticamente um atleta por
+     * categoria, modalidade e nome
      */
     class CompararCategoriaModalidadeNome implements Comparator<Atleta> {
+
         /**
-         * Compara alfabeticamente as categorias entre 2 atletas
-         * 
-         * @param a1
-         * @param a2
-         * @return 
+         * Compara alfabeticamente a categoria, modalidade e nome do atleta e do
+         * outro recebido por parâmetro
+         *
+         * @param a1 - atleta inicial
+         * @param a2 - atleta a ser compararado com o atleta inicial
+         * @return res - 1 (a1 é maior que a2), -1 (a1 é menor que a2) ou 0 (a1
+         * é igual ao a2)
          */
         @Override
         public int compare(Atleta a1, Atleta a2) {
-            if (!a1.getClass().getSimpleName().equalsIgnoreCase(a2.getClass().getSimpleName())) {
-                return a1.getClass().getSimpleName().compareTo(a2.getClass().getSimpleName());
+            int res = (a1.getClass().getSimpleName().compareToIgnoreCase(a2.getClass().getSimpleName()));
+            if (res == 0) {
+                res = a1.getAtividade().compareToIgnoreCase(a2.getAtividade());
             }
-            return 0;
+            if (res == 0) {
+                res = a1.compareTo(a2);
+            }
+            return res;
         }
     }
 }

@@ -134,13 +134,24 @@ public class Data implements Comparable<Data> {
     }
 
     /**
-     * Devolve a descrição textual da data no formato: diaDaSemana, dia de mês
+     * Devolve a descrição textual da data no formato: dia de mês
      * de ano.
      *
      * @return caraterísticas da data.
      */
     @Override
     public String toString() {
+        return String.format("%d de %s de %d", dia,
+                nomeMes[mes], ano);
+    }
+    
+    /**
+     * Devolve a descrição textual da data no formato: diaDaSemana, dia de mês
+     * de ano.
+     *
+     * @return caraterísticas da data.
+     */
+    public String toDiaSemanaDataString() {
         return String.format("%s, %d de %s de %d", diaDaSemana(), dia,
                 nomeMes[mes], ano);
     }

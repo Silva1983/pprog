@@ -1,9 +1,10 @@
 package pt.ipp.isep.pprog_1nb_1171343_1161874_tp;
 
 /**
- * Esta classe permite a construção de uma hierarquia de classes para
- * representarem atletas amadores.
- * 
+ * Representa um atleta amador através do seu nome, número ID civil, género,
+ * idade, atividade, frequência cardíaca em repouso, valor mensal dos prémios
+ * arrecadados e antiguidade no clube
+ *
  * @author António (1171343) & João (1161874)
  */
 public class AtletaAmador extends AtletaNaoProfissional {
@@ -35,19 +36,21 @@ public class AtletaAmador extends AtletaNaoProfissional {
     }
 
     /**
-     * Inicializa o construtor atleta amador com o nome, número de identificação cívil,
-     * género, idade, atividade, frequência cardíaca em repouso, antiguidade e valor por premios
-     * 
+     * Inicializa o construtor atleta amador com o nome, número de identificação
+     * civil, género, idade, atividade, frequência cardíaca em repouso,
+     * antiguidade e valor por premios
+     *
      * @param nome - nome do atleta
-     * @param numIdCivil - número de identificação cívil do atleta
+     * @param numIdCivil - número de identificação civil do atleta
      * @param genero - género do atleta
      * @param idade - idade do atleta
      * @param atividade - atividade do atleta
-     * @param freqCardRepouso - frequencia cardiaca em repouso do atleta
-     * @param valorMensalPremios - valor mensal dos prémios arrecadados pelo atleta
+     * @param freqCardRepouso - frequência cardíaca em repouso do atleta
+     * @param valorMensalPremios - valor mensal dos prémios arrecadados pelo
+     * atleta
      * @param antiguidade - antiguidade no clube
      */
-    public AtletaAmador(String nome, int numIdCivil, String genero, int idade, String atividade, 
+    public AtletaAmador(String nome, int numIdCivil, String genero, int idade, String atividade,
             int freqCardRepouso, float valorMensalPremios, int antiguidade) {
         super(nome, numIdCivil, genero, idade, atividade, freqCardRepouso, valorMensalPremios, antiguidade);
         contadorAtletaAmador++;
@@ -55,7 +58,7 @@ public class AtletaAmador extends AtletaNaoProfissional {
 
     /**
      * Devolve percentagem do valor mensal que cada jogador recebe
-     * 
+     *
      * @return percentagem do valor mensal que cada jogador recebe
      */
     public float getPercentParcelaVariavelDois() {
@@ -64,8 +67,9 @@ public class AtletaAmador extends AtletaNaoProfissional {
 
     /**
      * Modifica a percentagem do valor mensal que cada jogador recebe
-     * 
-     * @param percentParcelaVariavelDois percentagem do valor mensal que cada jogador recebe
+     *
+     * @param percentParcelaVariavelDois percentagem do valor mensal que cada
+     * jogador recebe
      */
     public void setPercentParcelaVariavelDois(float percentParcelaVariavelDois) {
         this.percentParcelaVariavelDois = percentParcelaVariavelDois;
@@ -73,7 +77,7 @@ public class AtletaAmador extends AtletaNaoProfissional {
 
     /**
      * Devolve valor mínimo que cada jogador recebe
-     * 
+     *
      * @return valor mínimo que cada jogador recebe
      */
     public float getValorParcelaVariavelDois() {
@@ -82,8 +86,9 @@ public class AtletaAmador extends AtletaNaoProfissional {
 
     /**
      * Modifica valor mínimo que cada jogador pode receber
-     * 
-     * @param valorFixoParcelaVariavelDois valor mínimo que cada jogador pode receber
+     *
+     * @param valorFixoParcelaVariavelDois valor mínimo que cada jogador pode
+     * receber
      */
     public void setValorParcelaVariavelDois(float valorFixoParcelaVariavelDois) {
         this.valorFixoParcelaVariavelDois = valorFixoParcelaVariavelDois;
@@ -91,7 +96,7 @@ public class AtletaAmador extends AtletaNaoProfissional {
 
     /**
      * Contador de atletas amadores
-     * 
+     *
      * @return quantidade de atletas amadores
      */
     public static int getContadorAtletaAmador() {
@@ -99,17 +104,9 @@ public class AtletaAmador extends AtletaNaoProfissional {
     }
 
     /**
-     * **
-     * Permite o cálculo da Frequência Cardíaca Trabalho queima de gordura
-     * através de polimorfismo
-     * 
-     * @return Frequência Cardíaca Trabalho queima de gordura
-     */
-     
-    /**
-     * Permite o cálculo do valor mensal que cada atleta recebe
-     * através de polimorfismo
-     * 
+     * Permite o cálculo do valor mensal que cada atleta recebe através de
+     * polimorfismo
+     *
      * @return cálculo do valor mensal
      */
     @Override

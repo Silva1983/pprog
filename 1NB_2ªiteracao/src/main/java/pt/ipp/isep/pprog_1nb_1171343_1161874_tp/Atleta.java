@@ -112,7 +112,8 @@ public abstract class Atleta implements Comparable<Atleta> {
      * @param idade - idade do atleta
      * @param atividade - atividade do atleta
      * @param freqCardRepouso - frequencia cardiaca em repouso do atleta
-     * @param valorMensalPremios - valor mensal dos prémios arrecadados pelo atleta
+     * @param valorMensalPremios - valor mensal dos prémios arrecadados pelo
+     * atleta
      */
     public Atleta(String nome, int numIdCivil, String genero, int idade,
             String atividade, int freqCardRepouso, float valorMensalPremios) {
@@ -301,7 +302,7 @@ public abstract class Atleta implements Comparable<Atleta> {
      */
     @Override
     public String toString() {
-        return String.format("%nNome: %s%nNº Id. Civil: %d%nGénero: %s%nIdade: %d%nAtividade: %s%nFCR: %d%nValor Mensal Prémios:%.2f%n",
+        return String.format("%nNome: %s%nNº Id. Civil: %d%nGénero: %s%nIdade: %d%nAtividade: %s%nFCR: %d%nValor Mensal Prémios: %.2f%n",
                 nome, numIdCivil, genero, idade, atividade, freqCardRepouso, valorMensalPremios);
     }
 
@@ -358,17 +359,44 @@ public abstract class Atleta implements Comparable<Atleta> {
 
     // ### TP2 ###
     /**
-     * Compara o nome de 2 atletas
+     * Compara alfabeticamente o nome do atleta e do outro recebido por
+     * parâmetro
      *
-     * @param outroAtleta - atleta a comparar com o atleta inicial
-     * @return 1 (atleta maior que outroAtleta), -1 (atleta é menor que
-     * outroAtleta) ou 0 (atleta é igual a outroAtleta)
+     * @param outroAtleta atleta a ser compararado com o atleta inicial
+     * @return 1 (o nome do atleta é maior que do outroAtleta), -1 (o nome do
+     * atleta é menor que do outroAtleta) ou 0 (nome do atleta é igual ao do
+     * outroAtleta)
      */
     @Override
     public int compareTo(Atleta outroAtleta) {
-
         return (this.getNome().trim().compareToIgnoreCase(outroAtleta.getNome()));
+    }
 
+    /**
+     * Devolve o nome do atleta
+     *
+     * @return nome
+     */
+    public String toNomeIdadeAtividadeString() {
+        return String.format("%nNome: %s%nIdade: %s%nAtividade: %s%n", nome, idade, atividade);
+    }
+
+    /**
+     * Devolve o nome e o valor total mensal de prémios do atleta
+     *
+     * @return nome, valorMensalPremios
+     */
+    public String toNomePremioString() {
+        return String.format("%nNome: %s%nValor Prémios: %.2f%n", nome, valorMensalPremios);
+    }
+    
+    /**
+     * Devolve o nome e a atividade do atleta
+     *
+     * @return nome, atividade
+     */
+    public String toNomeAtividadeString() {
+        return String.format("%nNome: %s%nCategoria: %s%n", nome, atividade);
     }
 
 }

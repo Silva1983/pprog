@@ -126,7 +126,7 @@ public class AtletaProfissionalTest {
         System.out.println("getcontadorAtletaProfissional");
         AtletaProfissional instance = new AtletaProfissional();
         int expResult = 0;
-        int result = instance.getcontadorAtletaProfissional();
+        int result = instance.getContadorAtletaProfissional();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -166,7 +166,7 @@ public class AtletaProfissionalTest {
     @Test
     public void testCalcularValorMensal() {
         System.out.println("calcularValorMensal");
-        AtletaProfissional instance = new AtletaProfissional(null, 0, null, 0, null, 0, 150, 500);
+        AtletaProfissional instance = new AtletaProfissional(null, 0, null, 0, null, 0, 500, 150);
         float expResult = 250.0F;
         float result = instance.calcularValorMensal();
         assertEquals(expResult, result, 0.0);
