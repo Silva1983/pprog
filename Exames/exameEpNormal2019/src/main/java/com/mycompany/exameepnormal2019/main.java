@@ -13,7 +13,7 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 public class main {
-    public static void main(String[] args) throws ArgumentoInvalidoException{
+    public static void main(String[] args) throws ArgumentoInvalidoException, InputMismatchException{
         Scanner ler = new Scanner (System.in);
         
         

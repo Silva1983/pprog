@@ -5,11 +5,13 @@
  */
 package com.mycompany.exameepnormal2019;
 
+import java.util.List;
+import java.util.ArrayList;
 /**
  *
  * @author ssilv
  */
-public class apartamento extends imovel implements calcularCondominio{
+public class Apartamento extends Imovel implements Condominio{
     
     private int nmQuartos;
     private static float comissao = 0.04f;
@@ -19,14 +21,14 @@ public class apartamento extends imovel implements calcularCondominio{
     
     private final static int NMQUARTOS_POR_OMISSAO = 0;
     
-    public apartamento(){
+    public Apartamento(){
         super();
         this.nmQuartos = NMQUARTOS_POR_OMISSAO;
         contApartamento++;
     }
     
-    public apartamento(String morada, String localidade, float areaUtil, float preco, int nmQuartos){
-        super(morada, localidade, areaUtil, preco);
+    public Apartamento(String morada, String localidade, float areaUtil, List<Imovel>imoveis, float preco, int nmQuartos){
+        super(morada, localidade, areaUtil, preco, imoveis);
         this.nmQuartos = nmQuartos;
         contApartamento++;
     }
@@ -44,7 +46,7 @@ public class apartamento extends imovel implements calcularCondominio{
     }
 
     public static void setComissao(float comissao) {
-        apartamento.comissao = comissao;
+        Apartamento.comissao = comissao;
     }
     
     public static int getContApartamento(){
@@ -69,7 +71,7 @@ public class apartamento extends imovel implements calcularCondominio{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final apartamento other = (apartamento) obj;
+        final Apartamento other = (Apartamento) obj;
         if (this.nmQuartos != other.nmQuartos) {
             return false;
         }
@@ -83,7 +85,7 @@ public class apartamento extends imovel implements calcularCondominio{
     }
     
     @Override
-    public float condominio(){
+    public float calcularCondominio(){
         return valCondominio * this.areaUtil;
     }
 }

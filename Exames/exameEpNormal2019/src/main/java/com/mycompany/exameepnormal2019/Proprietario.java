@@ -68,11 +68,17 @@ public class Proprietario {
         this.email = email;
     }
     
-    public void setNmTelefone(int nmTelefone) throws ArgumentoInvalidoException{
-        
-           if(this.nmTelefone <9999999 ){
+    public boolean verificaNum(){
+        while (this.nmTelefone <9999){
                throw new ArgumentoInvalidoException ("Número inválido, introduza novo número");
            }
+        return true;
+    }
+        
+    
+    public void setNmTelefone(int nmTelefone) throws ArgumentoInvalidoException{
+        if(verificaNum() == true)
+        
             this.nmTelefone = nmTelefone;
         }
   

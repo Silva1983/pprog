@@ -5,20 +5,22 @@
  */
 package com.mycompany.exameepnormal2019;
 
+import java.util.List;
+
 /**
  *
  * @author ssilv
  */
-public class escritorio extends imovel implements calcularCondominio{
+public class Escritorio extends Imovel implements Condominio{
     private static float comissao = 0.07f;
     public float valCondominio = 0.40f;
     
-    public escritorio(){
+    public Escritorio(){
         super();
     }
     
-    public escritorio(String morada, String localidade, float areaUtil, float preco){
-        super(morada, localidade, areaUtil, preco);
+    public Escritorio(String morada, String localidade, float areaUtil, List<Imovel>imoveis, float preco){
+        super(morada, localidade, areaUtil, preco, imoveis);
     }
 
     public void setValCondominio(float valCondominio) {
@@ -32,7 +34,7 @@ public class escritorio extends imovel implements calcularCondominio{
     }
     
     @Override
-    public float condominio(){
+    public float calcularCondominio(){
         return areaUtil * valCondominio;
     }
 }

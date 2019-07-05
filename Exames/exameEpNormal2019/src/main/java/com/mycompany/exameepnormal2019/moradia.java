@@ -5,11 +5,13 @@
  */
 package com.mycompany.exameepnormal2019;
 
+import java.util.List;
+
 /**
  *
  * @author ssilv
  */
-public class moradia extends imovel{
+public class Moradia extends Imovel{
     
     private int nmQuartos;
     private double areaExterior;
@@ -20,14 +22,14 @@ public class moradia extends imovel{
     private final static int NMQUARTOS_POR_OMISSAO = 0;
     private final static int AREA_EXTERIOR_POR_OMISSAO = 0;
     
-    public moradia(){
+    public Moradia(){
         super();
         this.nmQuartos = NMQUARTOS_POR_OMISSAO;
         this.areaExterior = AREA_EXTERIOR_POR_OMISSAO;
     }
     
-    public moradia(String morada, String localidade, float areaUtil, float preco, int nmQuartos, double areaExterior){
-        super(morada, localidade, areaUtil, preco);
+    public Moradia(String morada, String localidade, float areaUtil, float preco, List<Imovel>imoveis, int nmQuartos, double areaExterior){
+        super(morada, localidade, areaUtil, preco, imoveis);
         this.nmQuartos = nmQuartos;
         this.areaExterior = areaExterior;
     }
@@ -53,7 +55,7 @@ public class moradia extends imovel{
     }
 
     public static void setComissaoMin(double comissaoMin) {
-        moradia.comissaoMin = comissaoMin;
+        Moradia.comissaoMin = comissaoMin;
     }
 
     public static double getComissaoMax() {
@@ -61,7 +63,7 @@ public class moradia extends imovel{
     }
 
     public static void setComissaoMax(double comissaoMax) {
-        moradia.comissaoMax = comissaoMax;
+        Moradia.comissaoMax = comissaoMax;
     }
 
     @Override
