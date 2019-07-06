@@ -87,12 +87,23 @@ public abstract class  Imovel {
         imoveis.add(novoImovel);
     }
     
-    public List<Imovel> getImoveisByLocalAndArea(){
+    /*public List<Imovel> getImoveisByLocalAndArea(){
         List<Imovel>listaOrdenada = this.getImoveis();
         Collections.sort(listaOrdenada, new CompareImovelByLocalAndArea());
         return listaOrdenada;
     }
-    
+     */
+    public List<Imovel>listaOrdenada(){
+        Collections.sort(imoveis, new Comparator<Imovel>() {
+            @Override
+            public int compare(Imovel o1, Imovel o2) {
+                return String.valueOf(o1.localidade).compareTo(o2.localidade); 
+            }
+        });
+        return listaOrdenada();
+        
+                    
+    }
     
     @Override
     public boolean equals(Object obj) {
@@ -125,7 +136,7 @@ public abstract class  Imovel {
     
     public abstract double valorImovel();
     
-    class CompareImovelByLocalAndArea implements Comparator<Imovel>{
+    /*class CompareImovelByLocalAndArea implements Comparator<Imovel>{
         @Override
         public int compare(Imovel i1, Imovel i2){
             //if (i1.getLocalidade().compareTo(i2.getLocalidade())
@@ -136,6 +147,6 @@ public abstract class  Imovel {
                     return -1;
             return 0;
         }
-    }
+    }*/
     
 }
