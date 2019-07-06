@@ -68,8 +68,8 @@ public class Proprietario {
         this.email = email;
     }
     
-    public boolean verificaNum(){
-        while (this.nmTelefone <9999){
+    public boolean verificaNum(int numero){
+        while (numero <99999999){
                throw new ArgumentoInvalidoException ("Número inválido, introduza novo número");
            }
         return true;
@@ -77,7 +77,7 @@ public class Proprietario {
         
     
     public void setNmTelefone(int nmTelefone) throws ArgumentoInvalidoException{
-        if(verificaNum() == true)
+        if(verificaNum(nmTelefone) == true)
         
             this.nmTelefone = nmTelefone;
         }
