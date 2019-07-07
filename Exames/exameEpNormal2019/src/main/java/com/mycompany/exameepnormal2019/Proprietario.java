@@ -99,6 +99,4 @@ public class Proprietario {
         return this.nome == outroProp.nome && nif == outroProp.nif && email == outroProp.email
                 && nmTelefone == outroProp.nmTelefone;
     }
-
-    
 }

@@ -92,19 +92,38 @@ public abstract class  Imovel {
         Collections.sort(listaOrdenada, new CompareImovelByLocalAndArea());
         return listaOrdenada;
     }
-     */
+    */
+    
     public List<Imovel>listaOrdenada(){
         Collections.sort(imoveis, new Comparator<Imovel>() {
             @Override
-            public int compare(Imovel o1, Imovel o2) {
-                return String.valueOf(o1.localidade).compareTo(o2.localidade); 
+            public int compare(Imovel i1, Imovel i2) {
+                return String.valueOf(i1.localidade).compareTo(i2.localidade); 
             }
         });
-        return listaOrdenada();
-        
-                    
+        return listaOrdenada();              
     }
     
+    public List<Imovel>listaAreaCrescente(){
+        Collections.sort(imoveis, new Comparator<Imovel>(){
+            @Override
+            public int compare(Imovel i1, Imovel i2){
+                return Float.valueOf(i1.areaUtil).compareTo(i1.areaUtil);
+            }
+        });
+        return listaAreaCrescente();
+    }
+    
+    
+    /*    public List<Imovel>ListaOrdenadaLocalidade(){
+        Collections.sort(imoveis, new Comparator<Imovel>() {
+            @Override
+            public String compare(Imovel i1, Imovel i2){
+                return String.valueOf(i1.localidade).compareToIgnoreCase(i2.localidade);
+            }
+    };
+    }
+    */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

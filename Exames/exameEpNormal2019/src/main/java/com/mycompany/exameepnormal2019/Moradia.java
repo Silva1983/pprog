@@ -71,4 +71,22 @@ public class Moradia extends Imovel{
         return (getPreco() < 150000) ? preco + comissaoMin : preco + comissaoMax;
 
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Moradia other = (Moradia) obj;
+        
+        return Imovel.class.equals(obj) && this.getNmQuartos() == other.getNmQuartos() && 
+                this.getAreaExterior() == other.getAreaExterior();
+                
+    }
+    
+    
+    
 }

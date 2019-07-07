@@ -9,14 +9,16 @@ package com.mycompany.exameepnormal2019;
  *
  * @author ssilv
  */
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.util.List;
 
 public class main {
     public static void main(String[] args) throws ArgumentoInvalidoException, InputMismatchException{
         Scanner ler = new Scanner (System.in);
         
-        
+        //Questão 1:
         Proprietario pr = new Proprietario();
             System.out.println("Nome: ");
             String nome = ler.nextLine();
@@ -50,10 +52,19 @@ public class main {
                 }
             }while(dadosInvalidos );
         
-        System.out.println(pr.toString());
+        //System.out.println(pr.toString());
         
+        //Questão 2:
+        /*
+        ArrayList<Imovel> imoveis = new ArrayList<>();
+        imoveis.add(new Apartamento("Rua de cima", "Sitio", 500, 2500, 4);
+        proprietarios.add(new Proprietario("Ricardo", 123456, "sem@email.com", 938543456));
         
-        
-        
+        private static void listarProprietarios(List<Proprietario>lista){
+            for(Proprietario proprietarios: lista){
+                System.out.println(proprietarios.toString());
+            }
+        }
+        */
     }
 }

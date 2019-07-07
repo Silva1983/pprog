@@ -27,7 +27,7 @@ public class Apartamento extends Imovel implements Condominio{
         contApartamento++;
     }
     
-    public Apartamento(String morada, String localidade, float areaUtil, List<Imovel>imoveis, float preco, int nmQuartos){
+    public Apartamento(String morada, String localidade, float areaUtil, float preco,  List<Imovel>imoveis, int nmQuartos){
         super(morada, localidade, areaUtil, preco, imoveis);
         this.nmQuartos = nmQuartos;
         contApartamento++;
