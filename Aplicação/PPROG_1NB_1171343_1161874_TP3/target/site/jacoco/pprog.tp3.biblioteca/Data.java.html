@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Data.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PPROG_1NB_1171343_1161874_TP3</a> &gt; <a href="index.source.html" class="el_package">pprog.tp3.biblioteca</a> &gt; <span class="el_source">Data.java</span></div><h1>Data.java</h1><pre class="source lang-java linenums">package pprog.tp3.biblioteca;
+
+import java.util.Calendar;
+
+/**
+ * Representa uma data através do dia, mês e ano.
+ *
+ * @author ISEP-DEI-PPROG (editado)
+ */
+public class Data implements Comparable&lt;Data&gt; {
+
+    /**
+     * O ano da data.
+     */
+    private int ano;
+    
+    /**
+     * O mês da data.
+     */
+    private Mes mes;
+    
+    /**
+     * O dia da data.
+     */
+    private int dia;
+    
+    /**
+     * O ano por omissão.
+     */
+    private static final int ANO_POR_OMISSAO = 1;
+    
+    /**
+     * O mês por omissão.
+     */
+<span class="nc" id="L35">    private static final Mes MES_POR_OMISSAO = Mes.JANEIRO;</span>
+    
+    /**
+     * O dia por omissão.
+     */
+    private static final int DIA_POR_OMISSAO = 1;
+    
+    /**
+     * Representa os dias da semana.
+     */
+<span class="nc" id="L45">    private static enum DiaDaSemana {</span>
+
+        /**
+         * Os dias da semana.
+         */ 
+<span class="nc" id="L50">        DOMINGO { @Override public String toString() { return &quot;Domingo&quot;; } },</span>
+<span class="nc" id="L51">        SEGUNDA { @Override public String toString() { return &quot;Segunda-Feira&quot;; } },</span>
+<span class="nc" id="L52">        TERCA {   @Override public String toString() { return &quot;Terça-Feira&quot;; } },</span>
+<span class="nc" id="L53">        QUARTA {  @Override public String toString() { return &quot;Quarta-Feira&quot;; } },</span>
+<span class="nc" id="L54">        QUINTA {  @Override public String toString() { return &quot;Quinta-Feira&quot;; } },</span>
+<span class="nc" id="L55">        SEXTA {   @Override public String toString() { return &quot;Sexta-Feira&quot;; } },</span>
+<span class="nc" id="L56">        SABADO {  @Override public String toString() { return &quot;Sábado&quot;; } };</span>
+
+        /**
+         * Devolve a designação do dia da semana cuja ordem é recebida por 
+         * parâmetro.
+         * 
+         * @param ordemDiaDaSemana a ordem do dia da semana entre zero e seis, 
+         *                         inclusivé. A menor ordem corresponde ao 
+         *                         Domingo. 
+         * @return a designação do dia da semana. 
+         */
+        public static String designacaoDiaDaSemana(int ordemDiaDaSemana) {
+<span class="nc" id="L68">            return DiaDaSemana.values()[ordemDiaDaSemana].toString();</span>
+        }
+    }
+
+    /**
+     * Representa os meses do ano.
+     */
+<span class="nc" id="L75">    private static enum Mes {</span>
+
+        /**
+         * Os meses do ano.
+         */
+<span class="nc" id="L80">        JANEIRO(31) {   @Override public String toString() { return &quot;Janeiro&quot;; } }, </span>
+<span class="nc" id="L81">        FEVEREIRO(28) { @Override public String toString() { return &quot;Fevereiro&quot;; } }, </span>
+<span class="nc" id="L82">        MARCO(31) {     @Override public String toString() { return &quot;Março&quot;; } },</span>
+<span class="nc" id="L83">        ABRIL(30) {     @Override public String toString() { return &quot;Abril&quot;; } }, </span>
+<span class="nc" id="L84">        MAIO(31) {      @Override public String toString() { return &quot;Maio&quot;; } }, </span>
+<span class="nc" id="L85">        JUNHO(30) {     @Override public String toString() { return &quot;Junho&quot;; } }, </span>
+<span class="nc" id="L86">        JULHO(31) {     @Override public String toString() { return &quot;Julho&quot;; } }, </span>
+<span class="nc" id="L87">        AGOSTO(31) {    @Override public String toString() { return &quot;Agosto&quot;; } }, </span>
+<span class="nc" id="L88">        SETEMBRO(30) {  @Override public String toString() { return &quot;Setembro&quot;; } },</span>
+<span class="nc" id="L89">        OUTUBRO(31) {   @Override public String toString() { return &quot;Outubro&quot;; } }, </span>
+<span class="nc" id="L90">        NOVEMBRO(30) {  @Override public String toString() { return &quot;Novembro&quot;; } }, </span>
+<span class="nc" id="L91">        DEZEMBRO(31) {  @Override public String toString() { return &quot;Dezembro&quot;; } };</span>
+
+        /**
+         * O número de dias de um mês.
+         */
+        private int numeroDeDias;
+
+        /**
+        * Constrói um mês com o número de dias recebido por parâmetro.
+        * 
+        * @param numeroDeDias o número de dias do mês.
+        */
+<span class="nc" id="L103">        private Mes(int numeroDeDias) {</span>
+<span class="nc" id="L104">            this.numeroDeDias = numeroDeDias;</span>
+<span class="nc" id="L105">        }</span>
+
+        /**
+         * Devolve o número de dias do mês do ano recebido por parâmetro.
+         * 
+         * @param ano o ano do mês.
+         * @return o número de dias do mês do ano.
+         */
+        public int numeroDeDias(int ano) {
+<span class="nc bnc" id="L114" title="All 4 branches missed.">            if (ordinal() == 1 &amp;&amp; Data.isAnoBissexto(ano)) {</span>
+<span class="nc" id="L115">                return numeroDeDias + 1;</span>
+            }
+<span class="nc" id="L117">            return numeroDeDias;</span>
+        }
+        
+        /**
+         * Devolve o mês cuja ordem é recebida por parâmetro.
+         * 
+         * @param ordemDoMes a ordem do mês.
+         * @return o mês cuja ordem é recebida por parâmetro.
+         */
+        public static Mes obterMes(int ordemDoMes) {
+<span class="nc" id="L127">            return Mes.values()[ordemDoMes - 1];</span>
+        }
+
+    }
+    
+    /**
+     * Constrói uma instância de Data recebendo o ano, o mês e o dia.
+     *
+     * @param ano o ano da data.
+     * @param mes o mês da data.
+     * @param dia o dia da data.
+     */
+<span class="nc" id="L139">    public Data(int ano, int mes, int dia) {</span>
+<span class="nc" id="L140">        this.ano = ano;</span>
+<span class="nc" id="L141">        setMes(mes);</span>
+<span class="nc" id="L142">        setDia(dia);</span>
+<span class="nc" id="L143">    }</span>
+
+    /**
+     * Constrói uma instância de Data com a data por omissão.
+     */
+<span class="nc" id="L148">    public Data() {</span>
+<span class="nc" id="L149">        ano = ANO_POR_OMISSAO;</span>
+<span class="nc" id="L150">        mes = MES_POR_OMISSAO;</span>
+<span class="nc" id="L151">        dia = DIA_POR_OMISSAO;</span>
+<span class="nc" id="L152">    }</span>
+
+    /**
+     * Constrói uma instância de Data com as mesmas caraterísticas da data
+     * recebida por parâmetro.
+     *
+     * @param outraData a data com as características a copiar.
+     */
+<span class="nc" id="L160">    public Data(Data outraData) {</span>
+<span class="nc" id="L161">        ano = outraData.ano;</span>
+<span class="nc" id="L162">        mes = outraData.mes;</span>
+<span class="nc" id="L163">        dia = outraData.dia;</span>
+<span class="nc" id="L164">    }</span>
+    
+<span class="nc" id="L166">    public Data(int mes, int dia) {</span>
+<span class="nc" id="L167">        setMes(mes);</span>
+<span class="nc" id="L168">        setDia(dia);</span>
+<span class="nc" id="L169">    }</span>
+
+    public void setAno(int ano) {
+<span class="nc" id="L172">        this.ano = ano;</span>
+<span class="nc" id="L173">    }</span>
+
+    public void setMes(int mes) {
+<span class="nc bnc" id="L176" title="All 4 branches missed.">        if (mes &lt; 1 || mes &gt; 12) {</span>
+<span class="nc" id="L177">            throw new MesInvalidoException(&quot;Mês inválido! &quot; + mes);</span>
+        }
+<span class="nc" id="L179">        this.mes = Mes.obterMes(mes);</span>
+<span class="nc" id="L180">    }</span>
+
+    public void setDia(int dia) {
+//                if (dia&lt;1 || (this.mes.equals(&quot;Fevereiro&quot;) &amp;&amp; Data.isAnoBissexto(this.getAno()) &amp;&amp; dia &gt; 29) || dia &gt; Data.diasPorMes[this.mes]) {
+<span class="nc bnc" id="L184" title="All 4 branches missed.">        if (dia &lt; 1 || dia &gt; 31) {</span>
+<span class="nc" id="L185">            throw new DiaInvalidoException(&quot;Dia inválido! &quot; + dia);</span>
+        }
+<span class="nc" id="L187">        this.dia = dia;</span>
+<span class="nc" id="L188">    }</span>
+
+    /**
+     * Devolve o ano da data.
+     *
+     * @return ano da data
+     */
+    public int getAno() {
+<span class="nc" id="L196">        return ano;</span>
+    }
+
+    /**
+     * Devolve o mês da data.
+     *
+     * @return mês da data.
+     */
+    public int getMes() {
+<span class="nc" id="L205">        return mes.ordinal()+1;</span>
+    }
+
+    /**
+     * Devolve o dia da data.
+     *
+     * @return dia da data.
+     */
+    public int getDia() {
+<span class="nc" id="L214">        return dia;</span>
+    }
+
+    /**
+     * Modifica o ano, o mês e o dia da data.
+     *
+     * @param ano o novo ano da data.
+     * @param mes o novo mês da data.
+     * @param dia o novo dia da data.
+     */
+    public final void setData(int ano, int mes, int dia) {
+<span class="nc" id="L225">        this.ano = ano;</span>
+<span class="nc" id="L226">        this.mes = Mes.obterMes(mes);       </span>
+<span class="nc" id="L227">        this.dia = dia;</span>
+<span class="nc" id="L228">    }</span>
+
+    /**
+     * Devolve a descrição textual da data no formato: diaDaSemana, dia de mês
+     * de ano.
+     *
+     * @return caraterísticas da data.
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L238">        return String.format(&quot;%s, %d de %s de %d&quot;, diaDaSemana(), dia, mes, ano);</span>
+    }
+    
+    /**
+     * Devolve a descrição textual da data no formato: dia/mês
+     *
+     * @return caraterísticas da data.
+     */
+    public String toDiaMesString() {
+<span class="nc" id="L247">        return String.format(&quot;%d/%s&quot;, dia, mes);</span>
+    }
+
+    /**
+     * Devolve a data no formato:%04d/%02d/%02d.
+     *
+     * @return caraterísticas da data.
+     */
+    public String toAnoMesDiaString() {
+<span class="nc" id="L256">        return String.format(&quot;%04d/%02d/%02d&quot;, ano, mes.ordinal()+1, dia);</span>
+    }
+    
+    /**
+     * Compara a data com o objeto recebido.
+     *
+     * @param outroObjeto o objeto a comparar com a data.
+     * @return true se o objeto recebido representar uma data equivalente à
+     *         data. Caso contrário, retorna false.
+     */
+    @Override
+    public boolean equals(Object outroObjeto) {
+<span class="nc bnc" id="L268" title="All 2 branches missed.">        if (this == outroObjeto) {</span>
+<span class="nc" id="L269">            return true;</span>
+        }
+<span class="nc bnc" id="L271" title="All 4 branches missed.">        if (outroObjeto == null || getClass() != outroObjeto.getClass()) {</span>
+<span class="nc" id="L272">            return false;</span>
+        }
+<span class="nc" id="L274">        Data outraData = (Data) outroObjeto;</span>
+<span class="nc bnc" id="L275" title="All 6 branches missed.">        return ano == outraData.ano &amp;&amp; mes.equals(outraData.mes)</span>
+                &amp;&amp; dia == outraData.dia;
+    }
+
+    /**
+     * Compara a data com a outra data recebida por parâmetro.
+     *
+     * @param outraData a data a ser comparada.
+     * @return o valor 0 se a outraData recebida é igual à data; o valor -1 se
+     *         a outraData for posterior à data; o valor 1 se a outraData for 
+     *         anterior à data.
+     */
+    @Override
+    public int compareTo(Data outraData) {
+<span class="nc bnc" id="L289" title="All 4 branches missed.">        return (outraData.isMaior(this)) ? -1 : (isMaior(outraData)) ? 1 : 0;</span>
+    }
+
+    /**
+     * Devolve o dia da semana da data.
+     *
+     * @return dia da semana da data.
+     */
+    public String diaDaSemana() {
+<span class="nc" id="L298">        int totalDias = contaDias();</span>
+<span class="nc" id="L299">        totalDias = totalDias % 7;</span>
+
+<span class="nc" id="L301">        return DiaDaSemana.designacaoDiaDaSemana(totalDias);</span>
+    }
+
+
+    /**
+     * Devolve true se a data for maior do que a data recebida por parâmetro. Se
+     * a data for menor ou igual à data recebida por parâmetro, devolve false.
+     *
+     * @param outraData a outra data com a qual se compara a data.
+     * @return true se a data for maior do que a data recebida por parâmetro,
+     *         caso contrário devolve false.
+     */
+    public boolean isMaior(Data outraData) {
+<span class="nc" id="L314">        int totalDias = contaDias();</span>
+<span class="nc" id="L315">        int totalDias1 = outraData.contaDias();</span>
+
+<span class="nc bnc" id="L317" title="All 2 branches missed.">        return totalDias &gt; totalDias1;</span>
+    }
+
+    /**
+     * Devolve a diferença em número de dias entre a data e a data recebida por
+     * parâmetro.
+     *
+     * @param outraData a outra data com a qual se compara a data para calcular
+     *                  a diferença do número de dias.
+     * @return diferença em número de dias entre a data e a data recebida por
+     *         parâmetro.
+     */
+    public int diferenca(Data outraData) {
+<span class="nc" id="L330">        int totalDias = contaDias();</span>
+<span class="nc" id="L331">        int totalDias1 = outraData.contaDias();</span>
+
+<span class="nc" id="L333">        return Math.abs(totalDias - totalDias1);</span>
+    }
+
+    /**
+     * Devolve a diferença em número de dias entre a data e a data recebida por
+     * parâmetro com ano, mês e dia.
+     *
+     * @param ano o ano da data com a qual se compara a data para calcular a
+     *            diferença do número de dias.
+     * @param mes o mês da data com a qual se compara a data para calcular a
+     *            diferença do número de dias.
+     * @param dia o dia da data com a qual se compara a data para calcular a
+     *            diferença do número de dias.
+     * @return diferença em número de dias entre a data e a data recebida por
+     *         parâmetro com ano, mês e dia.
+     */
+    public int diferenca(int ano, int mes, int dia) {
+<span class="nc" id="L350">        int totalDias = contaDias();</span>
+<span class="nc" id="L351">        Data outraData = new Data(ano, mes, dia);</span>
+<span class="nc" id="L352">        int totalDias1 = outraData.contaDias();</span>
+
+<span class="nc" id="L354">        return Math.abs(totalDias - totalDias1);</span>
+    }
+
+    /**
+     * Devolve true se o ano passado por parâmetro for bissexto. Se o ano
+     * passado por parâmetro não for bissexto, devolve false.
+     *
+     * @param ano o ano a validar.
+     * @return true se o ano passado por parâmetro for bissexto, caso contrário
+     *         devolve false.
+     */
+    public static boolean isAnoBissexto(int ano) {
+<span class="nc bnc" id="L366" title="All 6 branches missed.">        return ano % 4 == 0 &amp;&amp; ano % 100 != 0 || ano % 400 == 0;</span>
+    }
+
+    /**
+     * Devolve a data atual do sistema.
+     *
+     * @return a data atual do sistema.
+     */
+    public static Data dataAtual() {
+<span class="nc" id="L375">        Calendar hoje = Calendar.getInstance();</span>
+<span class="nc" id="L376">        int ano = hoje.get(Calendar.YEAR);</span>
+<span class="nc" id="L377">        int mes = hoje.get(Calendar.MONTH) + 1;    // janeiro é representado por 0.</span>
+<span class="nc" id="L378">        int dia = hoje.get(Calendar.DAY_OF_MONTH);</span>
+<span class="nc" id="L379">        return new Data(ano, mes, dia);</span>
+    }
+
+    /**
+     * Devolve o número de dias desde o dia 1/1/1 até à data.
+     *
+     * @return número de dias desde o dia 1/1/1 até à data.
+     */
+    private int contaDias() {
+<span class="nc" id="L388">        int totalDias = 0;</span>
+
+<span class="nc bnc" id="L390" title="All 2 branches missed.">        for (int i = 1; i &lt; ano; i++) {</span>
+<span class="nc bnc" id="L391" title="All 2 branches missed.">            totalDias += isAnoBissexto(i) ? 366 : 365;</span>
+        }
+<span class="nc bnc" id="L393" title="All 2 branches missed.">        for (int i = 1; i &lt; mes.ordinal()+1; i++) {</span>
+<span class="nc" id="L394">            totalDias += Mes.obterMes(i).numeroDeDias(ano);</span>
+        }
+<span class="nc" id="L396">        totalDias += dia;</span>
+
+<span class="nc" id="L398">        return totalDias;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

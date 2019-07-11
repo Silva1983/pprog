@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Tempo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PPROG_1NB_1171343_1161874_TP3</a> &gt; <a href="index.source.html" class="el_package">pprog.tp3.biblioteca</a> &gt; <span class="el_source">Tempo.java</span></div><h1>Tempo.java</h1><pre class="source lang-java linenums">package pprog.tp3.biblioteca;
+
+import java.util.Calendar;
+
+/**
+ * Representa um tempo através das horas, minutos e segundos.
+ *
+ * @author ISEP-DEI-PPROG
+ */
+public class Tempo implements Comparable&lt;Tempo&gt; {
+
+    /**
+     * As horas do tempo.
+     */
+    private int horas;
+
+    /**
+     * Os minutos do tempo.
+     */
+    private int minutos;
+
+    /**
+     * Os segundos do tempo.
+     */
+    private int segundos;
+
+    /**
+     * As horas por omissão.
+     */
+    private static final int HORAS_POR_OMISSAO = 0;
+
+    /**
+     * Os minutos por omissão.
+     */
+    private static final int MINUTOS_POR_OMISSAO = 0;
+
+    /**
+     * Os segundos por omissão.
+     */
+    private static final int SEGUNDOS_POR_OMISSAO = 0;
+
+    /**
+     * Constrói uma instância de Tempo recebendo as horas, minutos e segundos.
+     *
+     * @param horas as horas do tempo.
+     * @param minutos os minutos do tempo.
+     * @param segundos os segundos do tempo.
+     */
+<span class="nc" id="L49">    public Tempo(int horas, int minutos, int segundos) {</span>
+<span class="nc" id="L50">        this.horas = horas;</span>
+<span class="nc" id="L51">        this.minutos = minutos;</span>
+<span class="nc" id="L52">        this.segundos = segundos;</span>
+<span class="nc" id="L53">    }</span>
+
+    /**
+     * Constrói uma instância de Tempo recebendo as horas e os minutos e
+     * assumindo os segundos por omissão.
+     *
+     * @param horas as horas do tempo.
+     * @param minutos os minutos do tempo.
+     */
+<span class="nc" id="L62">    public Tempo(int horas, int minutos) {</span>
+<span class="nc" id="L63">        setHoras(horas);</span>
+<span class="nc" id="L64">        setMinutos(minutos);</span>
+<span class="nc" id="L65">        segundos = SEGUNDOS_POR_OMISSAO;</span>
+<span class="nc" id="L66">    }</span>
+
+    /**
+     * Constrói uma instância de Tempo recebendo as horas e assumindo os minutos
+     * e os segundos, por omissão.
+     *
+     * @param horas as horas do tempo.
+     */
+<span class="nc" id="L74">    public Tempo(int horas) {</span>
+<span class="nc" id="L75">        this.horas = horas;</span>
+<span class="nc" id="L76">        minutos = MINUTOS_POR_OMISSAO;</span>
+<span class="nc" id="L77">        segundos = SEGUNDOS_POR_OMISSAO;</span>
+<span class="nc" id="L78">    }</span>
+
+    /**
+     * Constrói uma instância de Tempo com as horas, minutos e segundos, por
+     * omissão.
+     */
+<span class="nc" id="L84">    public Tempo() {</span>
+<span class="nc" id="L85">        horas = HORAS_POR_OMISSAO;</span>
+<span class="nc" id="L86">        minutos = MINUTOS_POR_OMISSAO;</span>
+<span class="nc" id="L87">        segundos = SEGUNDOS_POR_OMISSAO;</span>
+<span class="nc" id="L88">    }</span>
+
+    /**
+     * Constrói uma instância de Tempo com as mesmas caraterísticas do tempo
+     * recebido por parâmetro.
+     *
+     * @param outroTempo o tempo com as características a copiar.
+     */
+<span class="nc" id="L96">    public Tempo(Tempo outroTempo) {</span>
+<span class="nc" id="L97">        horas = outroTempo.horas;</span>
+<span class="nc" id="L98">        minutos = outroTempo.minutos;</span>
+<span class="nc" id="L99">        segundos = outroTempo.segundos;</span>
+<span class="nc" id="L100">    }</span>
+
+    /**
+     * Devolve as horas do tempo.
+     *
+     * @return horas do tempo.
+     */
+    public int getHoras() {
+<span class="nc" id="L108">        return horas;</span>
+    }
+
+    /**
+     * Devolve os minutos do tempo.
+     *
+     * @return minutos do tempo.
+     */
+    public int getMinutos() {
+<span class="nc" id="L117">        return minutos;</span>
+    }
+
+    /**
+     * Devolve os segundos do tempo.
+     *
+     * @return segundos do tempo.
+     */
+    public int getSegundos() {
+<span class="nc" id="L126">        return segundos;</span>
+    }
+
+    /**
+     * Modifica as horas do tempo.
+     *
+     * @param horas as novas horas do tempo.
+     */
+    public void setHoras(int horas) {
+<span class="nc bnc" id="L135" title="All 4 branches missed.">        if (horas &lt; 0 || horas &gt; 60) {</span>
+<span class="nc" id="L136">            throw new TempoInvalidoException(&quot;Hora inválida &quot; + horas);</span>
+        }
+<span class="nc" id="L138">        this.horas = horas;</span>
+<span class="nc" id="L139">    }</span>
+
+    /**
+     * Modifica os minutos do tempo.
+     *
+     * @param minutos os novos minutos do tempo.
+     */
+    public void setMinutos(int minutos) {
+<span class="nc bnc" id="L147" title="All 4 branches missed.">        if (horas &lt; 0 || horas &gt; 60) {</span>
+<span class="nc" id="L148">            throw new TempoInvalidoException(&quot;Minuto inválido &quot; + horas);</span>
+        }
+<span class="nc" id="L150">        this.minutos = minutos;</span>
+<span class="nc" id="L151">    }</span>
+
+    /**
+     * Modifica os segundos do tempo.
+     *
+     * @param segundos os novos segundos do tempo.
+     */
+    public void setSegundos(int segundos) {
+<span class="nc" id="L159">        this.segundos = segundos;</span>
+<span class="nc" id="L160">    }</span>
+
+    /**
+     * Modifica as horas, os minutos e os segundos do tempo.
+     *
+     * @param horas as novas horas do tempo.
+     * @param minutos os novos minutos do tempo.
+     * @param segundos os novos segundos do tempo.
+     */
+    public void setTempo(int horas, int minutos, int segundos) {
+<span class="nc" id="L170">        this.horas = horas;</span>
+<span class="nc" id="L171">        this.minutos = minutos;</span>
+<span class="nc" id="L172">        this.segundos = segundos;</span>
+<span class="nc" id="L173">    }</span>
+
+    /**
+     * Devolve a descrição textual do tempo no formato: %02d:%02d:%02d AM/PM.
+     *
+     * @return caraterísticas do tempo.
+     */
+    @Override
+    public String toString() {
+<span class="nc bnc" id="L182" title="All 4 branches missed.">        return String.format(&quot;%02d:%02d:%02d %s&quot;,</span>
+<span class="nc" id="L183">                (horas == 12 || horas == 0) ? 12 : horas % 12,</span>
+<span class="nc bnc" id="L184" title="All 2 branches missed.">                minutos, segundos, horas &lt; 12 ? &quot;AM&quot; : &quot;PM&quot;);</span>
+    }
+
+    /**
+     * Devolve o tempo no formato: %02d%02d%02d.
+     *
+     * @return caraterísticas do tempo.
+     */
+    public String toStringHHMMSS() {
+<span class="nc" id="L193">        return String.format(&quot;%02d:%02d:%02d&quot;, horas, minutos, segundos);</span>
+    }
+
+    /**
+     * Devolve o tempo no formato: %02d%02d.
+     *
+     * @return caraterísticas do tempo.
+     */
+    public String toStringHHMM() {
+<span class="nc" id="L202">        return String.format(&quot;%02d:%02d&quot;, horas, minutos);</span>
+    }
+
+    /**
+     * Compara o tempo com o objeto recebido.
+     *
+     * @param outroObjeto o objeto a comparar com o tempo.
+     * @return true se o objeto recebido representar outro tempo equivalente ao
+     * tempo. Caso contrário, retorna false.
+     */
+    @Override
+    public boolean equals(Object outroObjeto) {
+<span class="nc bnc" id="L214" title="All 2 branches missed.">        if (this == outroObjeto) {</span>
+<span class="nc" id="L215">            return true;</span>
+        }
+<span class="nc bnc" id="L217" title="All 4 branches missed.">        if (outroObjeto == null || getClass() != outroObjeto.getClass()) {</span>
+<span class="nc" id="L218">            return false;</span>
+        }
+<span class="nc" id="L220">        Tempo outroTempo = (Tempo) outroObjeto;</span>
+<span class="nc bnc" id="L221" title="All 6 branches missed.">        return horas == outroTempo.horas &amp;&amp; minutos == outroTempo.minutos</span>
+                &amp;&amp; segundos == outroTempo.segundos;
+    }
+
+    /**
+     * Compara o tempo com o outro tempo recebido por parâmetro.
+     *
+     * @param outroTempo o tempo a ser comparado.
+     * @return o valor 0 se o outroTempo recebido é igual ao tempo; o valor -1
+     * se o outroTempo for posterior ao tempo; o valor 1 se o outroTempo for
+     * anterior ao tempo.
+     */
+    @Override
+    public int compareTo(Tempo outroTempo) {
+<span class="nc bnc" id="L235" title="All 4 branches missed.">        return (outroTempo.isMaior(this)) ? -1 : (isMaior(outroTempo)) ? 1 : 0;</span>
+    }
+
+    /**
+     * Aumenta o tempo em um segundo.
+     */
+    public void tick() {
+<span class="nc" id="L242">        segundos = ++segundos % 60;</span>
+<span class="nc bnc" id="L243" title="All 2 branches missed.">        if (segundos == 0) {</span>
+<span class="nc" id="L244">            minutos = ++minutos % 60;</span>
+<span class="nc bnc" id="L245" title="All 2 branches missed.">            if (minutos == 0) {</span>
+<span class="nc" id="L246">                horas = ++horas % 24;</span>
+            }
+        }
+<span class="nc" id="L249">    }</span>
+
+    /**
+     * Devolve true se o tempo for maior do que o tempo recebido por parâmetro.
+     * Se o tempo for menor ou igual ao tempo recebido por parâmetro, devolve
+     * false.
+     *
+     * @param outroTempo o outro tempo com o qual se compara o tempo.
+     * @return true se o tempo for maior do que o tempo recebido por parâmetro,
+     * caso contrário devolve false.
+     */
+    public boolean isMaior(Tempo outroTempo) {
+<span class="nc bnc" id="L261" title="All 2 branches missed.">        return toSegundos() &gt; outroTempo.toSegundos();</span>
+    }
+
+    /*
+     * Solução alternativa 
+     * public boolean isMaior(Tempo outroTempo){ 
+     *      if ( horas &gt; outroTempo.horas || 
+     *          (horas==outroTempo.horas &amp;&amp; minutos&gt;outroTempo.minutos) || 
+     *          (horas==outroTempo.horas &amp;&amp; minutos==outroTempo.minutos &amp;&amp;
+     *           segundos &gt; outroTempo.segundos) ) 
+     *         return true;
+     *      return false;
+     * }
+     */
+    /**
+     * Devolve true se o tempo for maior do que o tempo (horas, minutos e
+     * segundos) recebido por parâmetro. Se o tempo for menor ou igual ao tempo
+     * (horas, minutos e segundos) recebido por parâmetro, devolve false.
+     *
+     * @param horas as outras horas do tempo com o qual se compara o tempo.
+     * @param minutos os outros minutos do tempo com o qual se compara o tempo.
+     * @param segundos os outros segundos do tempo com o qual se compara o
+     * tempo.
+     * @return true se o tempo for maior do que o tempo (horas, minutos e
+     * segundos) recebido por parâmetro, caso contrário devolve false.
+     */
+    public boolean isMaior(int horas, int minutos, int segundos) {
+<span class="nc" id="L288">        Tempo outroTempo = new Tempo(horas, minutos, segundos);</span>
+<span class="nc bnc" id="L289" title="All 2 branches missed.">        return this.toSegundos() &gt; outroTempo.toSegundos();</span>
+    }
+
+    /**
+     * Devolve a diferença em segundos entre o tempo e o tempo recebido por
+     * parâmetro.
+     *
+     * @param outroTempo o outro tempo com o qual se compara o tempo para
+     * calcular a diferença em segundos.
+     * @return diferença em segundos entre o tempo e o tempo recebido por
+     * parâmetro.
+     */
+    public int diferencaEmSegundos(Tempo outroTempo) {
+<span class="nc" id="L302">        return Math.abs(toSegundos() - outroTempo.toSegundos());</span>
+    }
+
+    /**
+     * Devolve uma instância Tempo representativa da diferença entre o tempo e o
+     * tempo recebido por parâmetro.
+     *
+     * @param outroTempo o outro tempo com o qual se compara o tempo para obter
+     * uma instãncia Tempo representativa da diferença entre o tempo e o tempo
+     * recebido por parâmetro.
+     * @return instância Tempo representativa da diferença entre o tempo e o
+     * tempo recebido por parâmetro.
+     */
+    public Tempo diferencaEmTempo(Tempo outroTempo) {
+<span class="nc" id="L316">        int dif = diferencaEmSegundos(outroTempo);</span>
+<span class="nc" id="L317">        int s = dif % 60;</span>
+<span class="nc" id="L318">        dif = dif / 60;</span>
+<span class="nc" id="L319">        int m = dif % 60;</span>
+<span class="nc" id="L320">        int h = dif / 60;</span>
+<span class="nc" id="L321">        return new Tempo(h, m, s);</span>
+    }
+
+    /**
+     * Devolve o tempo atual do sistema.
+     *
+     * @return o tempo atual do sistema.
+     */
+    public static Tempo tempoAtual() {
+<span class="nc" id="L330">        Calendar agora = Calendar.getInstance();</span>
+<span class="nc" id="L331">        int hora = agora.get(Calendar.HOUR_OF_DAY);</span>
+<span class="nc" id="L332">        int minuto = agora.get(Calendar.MINUTE);</span>
+<span class="nc" id="L333">        int segundo = agora.get(Calendar.SECOND);</span>
+<span class="nc" id="L334">        return new Tempo(hora, minuto, segundo);</span>
+    }
+
+    /**
+     * Devolve o número de segundos correspondente ao tempo.
+     *
+     * @return número de segundos correspondente ao tempo.
+     */
+    private int toSegundos() {
+<span class="nc" id="L343">        return horas * 3600 + minutos * 60 + segundos;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

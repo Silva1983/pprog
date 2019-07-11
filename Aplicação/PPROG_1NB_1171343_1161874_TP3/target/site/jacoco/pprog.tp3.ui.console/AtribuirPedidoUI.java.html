@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AtribuirPedidoUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PPROG_1NB_1171343_1161874_TP3</a> &gt; <a href="index.source.html" class="el_package">pprog.tp3.ui.console</a> &gt; <span class="el_source">AtribuirPedidoUI.java</span></div><h1>AtribuirPedidoUI.java</h1><pre class="source lang-java linenums">package pprog.tp3.ui.console;
+
+import java.io.IOException;
+import pprog.tp3.model.AtribuicaoPedido;
+import pprog.tp3.model.CriteriosAtribuicaoPedido;
+import pprog.tp3.model.Empresa;
+import pprog.tp3.utils.ListaForEach;
+import pprog.tp3.utils.Utils;
+
+/**
+ *
+ * @author António (1171343) &amp; João (1161874)
+ */
+public class AtribuirPedidoUI {
+
+    private Empresa empresa;
+    private AtribuicaoPedido novoAtribuirPedido;
+
+<span class="nc" id="L19">    public AtribuirPedidoUI() {</span>
+<span class="nc" id="L20">        novoAtribuirPedido = new AtribuicaoPedido();</span>
+<span class="nc" id="L21">    }</span>
+
+    public void run() throws IOException {
+<span class="nc" id="L24">        System.out.println(&quot;\n# Atribuir pedido de prestação de serviço a um prestador de serviço #&quot;);</span>
+
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (introduzDados()) {</span>
+<span class="nc" id="L27">            apresentaDados();</span>
+
+<span class="nc bnc" id="L29" title="All 2 branches missed.">            if (Utils.confirma(&quot;Confirma os dados introduzidos? (S/N)&quot;)) {</span>
+//                if (novoAtribuirPedido.registaAtribuicao()) {
+//                    System.out.println(&quot;Registo efetuado com sucesso.&quot;);
+//                } else {
+//                    System.out.println(&quot;Não foi possivel concluir o registo com sucesso.&quot;);
+//                }
+            }
+        } else {
+<span class="nc" id="L37">            System.out.println(&quot;Ocorreu um erro. Operação cancelada.&quot;);</span>
+<span class="nc" id="L38">            MenuUI uiMenu = new MenuUI();</span>
+//            uiMenu.run();
+        }
+<span class="nc" id="L41">    }</span>
+
+    private boolean introduzDados() {
+//        ListaForEach.listarPedidos(empresa.getPedidosPrestacaoServico());
+
+<span class="nc" id="L46">        String strNumPedido = Utils.readLineFromConsole(&quot;Insira um número do pedido de prestação de serviços: &quot;);</span>
+//        correr método para encontrar os prestadores daquele serviço disponíveis para aquele horário
+//        ListaForEach.listarPrestadoresDisponiveis(ArrayList com os prestadores disponíveis);
+
+<span class="nc" id="L50">        String strPrestador = Utils.readLineFromConsole(&quot;Insira o prestador de serviços a atribuir ao pedido: &quot;);</span>
+//        novoAtribuirPedido.registar(Cliente x, PrestadorServico y)
+<span class="nc" id="L52">        return true;</span>
+    }
+
+    private void apresentaDados() {
+<span class="nc" id="L56">        System.out.println(&quot;\nCategoria:\n&quot; + novoAtribuirPedido.getAtribuicaoString());</span>
+<span class="nc" id="L57">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

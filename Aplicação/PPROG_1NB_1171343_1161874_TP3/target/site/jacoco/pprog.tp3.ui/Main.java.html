@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PPROG_1NB_1171343_1161874_TP3</a> &gt; <a href="index.source.html" class="el_package">pprog.tp3.ui</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package pprog.tp3.ui;
+
+import pprog.tp3.model.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+import pprog.tp3.ui.console.MenuUI;
+
+/**
+ *
+ * @author António (1171343) &amp; João (1161874)
+ */
+<span class="nc" id="L14">public class Main {</span>
+
+    public static void main(String[] args) throws IOException {
+<span class="nc" id="L17">        Empresa empresa = new Empresa();</span>
+<span class="nc" id="L18">        Properties props = getProperties();</span>
+<span class="nc" id="L19">        empresa.setDesignacao(props.getProperty(&quot;Empresa.Designacao&quot;));</span>
+<span class="nc" id="L20">        empresa.setNif(props.getProperty(&quot;Empresa.NIF&quot;));</span>
+<span class="nc" id="L21">        bootstrap(props, empresa);</span>
+<span class="nc" id="L22">        MenuUI uiMenu = new MenuUI();</span>
+<span class="nc" id="L23">        uiMenu.run(empresa);</span>
+<span class="nc" id="L24">    }</span>
+
+    public static Properties getProperties() {
+<span class="nc" id="L27">        Properties props = new Properties();</span>
+        // Adiciona propriedades e valores por omissão
+<span class="nc" id="L29">        props.setProperty(&quot;Empresa.Designacao&quot;, &quot;Default Lda.&quot;);</span>
+<span class="nc" id="L30">        props.setProperty(&quot;Empresa.NIF&quot;, &quot;Default NIF&quot;);</span>
+        // Lê as propriedades e valores definidas 
+        try {
+<span class="nc" id="L33">            InputStream in = new FileInputStream(&quot;config.properties&quot;);</span>
+            try {
+<span class="nc" id="L35">                props.load(in);</span>
+            } finally {
+<span class="nc" id="L37">                in.close();</span>
+<span class="nc" id="L38">            }</span>
+<span class="nc" id="L39">        } catch (IOException e) {</span>
+<span class="nc" id="L40">            System.out.println(&quot;Não foi possível ler o ficheiro de configuração&quot; + e.getMessage());</span>
+<span class="nc" id="L41">        }</span>
+<span class="nc" id="L42">        return props;</span>
+    }
+
+    public static void bootstrap(Properties props, Empresa empresa) {
+        
+<span class="nc" id="L47">        empresa.addUtilizador(new Cliente(props.getProperty(&quot;Cliente1.nome&quot;), props.getProperty(&quot;Cliente1.email&quot;), props.getProperty(&quot;Cliente1.nif&quot;), props.getProperty(&quot;Cliente1.telefone&quot;), new EnderecoPostal(props.getProperty(&quot;Cliente1.local&quot;), props.getProperty(&quot;Cliente1.codigoPostal&quot;), props.getProperty(&quot;Cliente1.localidade&quot;))));</span>
+<span class="nc" id="L48">        empresa.addUtilizador(new Cliente(props.getProperty(&quot;Cliente2.nome&quot;), props.getProperty(&quot;Cliente2.email&quot;), props.getProperty(&quot;Cliente2.nif&quot;), props.getProperty(&quot;Cliente2.telefone&quot;), new EnderecoPostal(props.getProperty(&quot;Cliente2.local&quot;), props.getProperty(&quot;Cliente2.codigoPostal&quot;), props.getProperty(&quot;Cliente2.localidade&quot;))));</span>
+<span class="nc" id="L49">        empresa.addUtilizador(new Cliente(props.getProperty(&quot;Cliente3.nome&quot;), props.getProperty(&quot;Cliente3.email&quot;), props.getProperty(&quot;Cliente3.nif&quot;), props.getProperty(&quot;Cliente3.telefone&quot;), new EnderecoPostal(props.getProperty(&quot;Cliente3.local&quot;), props.getProperty(&quot;Cliente3.codigoPostal&quot;), props.getProperty(&quot;Cliente3.localidade&quot;))));</span>
+<span class="nc" id="L50">        empresa.addUtilizador(new Cliente(props.getProperty(&quot;Cliente4.nome&quot;), props.getProperty(&quot;Cliente4.email&quot;), props.getProperty(&quot;Cliente4.nif&quot;), props.getProperty(&quot;Cliente4.telefone&quot;), new EnderecoPostal(props.getProperty(&quot;Cliente4.local&quot;), props.getProperty(&quot;Cliente4.codigoPostal&quot;), props.getProperty(&quot;Cliente4.localidade&quot;))));</span>
+
+<span class="nc" id="L52">        empresa.addUtilizador(new Administrativo(props.getProperty(&quot;Administrativo1.nome&quot;), props.getProperty(&quot;Administrativo1.email&quot;)));</span>
+<span class="nc" id="L53">        empresa.addUtilizador(new Administrativo(props.getProperty(&quot;Administrativo2.nome&quot;), props.getProperty(&quot;Administrativo2.email&quot;)));</span>
+
+<span class="nc" id="L55">        empresa.addUtilizador(new PrestadorServico(props.getProperty(&quot;PrestadorServico1.nomeCompleto&quot;), props.getProperty(&quot;PrestadorServico1.email&quot;), props.getProperty(&quot;PrestadorServico1.nif&quot;), props.getProperty(&quot;PrestadorServico1.telefone&quot;), props.getProperty(&quot;PrestadorServico1.nomeAbreviado&quot;)));</span>
+<span class="nc" id="L56">        empresa.addUtilizador(new PrestadorServico(props.getProperty(&quot;PrestadorServico2.nomeCompleto&quot;), props.getProperty(&quot;PrestadorServico2.email&quot;), props.getProperty(&quot;PrestadorServico2.nif&quot;), props.getProperty(&quot;PrestadorServico2.telefone&quot;), props.getProperty(&quot;PrestadorServico2.nomeAbreviado&quot;)));</span>
+<span class="nc" id="L57">        empresa.addUtilizador(new PrestadorServico(props.getProperty(&quot;PrestadorServico3.nomeCompleto&quot;), props.getProperty(&quot;PrestadorServico3.email&quot;), props.getProperty(&quot;PrestadorServico3.nif&quot;), props.getProperty(&quot;PrestadorServico3.telefone&quot;), props.getProperty(&quot;PrestadorServico3.nomeAbreviado&quot;)));</span>
+<span class="nc" id="L58">        empresa.addUtilizador(new PrestadorServico(props.getProperty(&quot;PrestadorServico4.nomeCompleto&quot;), props.getProperty(&quot;PrestadorServico4.email&quot;), props.getProperty(&quot;PrestadorServico4.nif&quot;), props.getProperty(&quot;PrestadorServico4.telefone&quot;), props.getProperty(&quot;PrestadorServico4.nomeAbreviado&quot;)));</span>
+
+<span class="nc" id="L60">        empresa.addServico(new Servico(props.getProperty(&quot;Servicos1.strId&quot;), props.getProperty(&quot;Servicos1.strDescricaoBreve&quot;), props.getProperty(&quot;Servicos1.strDescricaoCompleta&quot;), Double.parseDouble(props.getProperty(&quot;Servicos1.dCustoHora&quot;)), new Categoria(props.getProperty(&quot;Categoria1.strCodigo&quot;), (props.getProperty(&quot;Categoria1.m_strDescricao&quot;)))));</span>
+<span class="nc" id="L61">        empresa.addServico(new Servico(props.getProperty(&quot;Servicos2.strId&quot;), props.getProperty(&quot;Servicos2.strDescricaoBreve&quot;), props.getProperty(&quot;Servicos2.strDescricaoCompleta&quot;), Double.parseDouble(props.getProperty(&quot;Servicos2.dCustoHora&quot;)), new Categoria(props.getProperty(&quot;Categoria2.strCodigo&quot;), (props.getProperty(&quot;Categoria2.m_strDescricao&quot;)))));</span>
+<span class="nc" id="L62">        empresa.addServico(new Servico(props.getProperty(&quot;Servicos3.strId&quot;), props.getProperty(&quot;Servicos3.strDescricaoBreve&quot;), props.getProperty(&quot;Servicos3.strDescricaoCompleta&quot;), Double.parseDouble(props.getProperty(&quot;Servicos3.dCustoHora&quot;)), new Categoria(props.getProperty(&quot;Categoria2.strCodigo&quot;), (props.getProperty(&quot;Categoria2.m_strDescricao&quot;)))));</span>
+<span class="nc" id="L63">        empresa.addServico(new Servico(props.getProperty(&quot;Servicos4.strId&quot;), props.getProperty(&quot;Servicos4.strDescricaoBreve&quot;), props.getProperty(&quot;Servicos4.strDescricaoCompleta&quot;), Double.parseDouble(props.getProperty(&quot;Servicos4.dCustoHora&quot;)), new Categoria(props.getProperty(&quot;Categoria3.strCodigo&quot;), (props.getProperty(&quot;Categoria3.m_strDescricao&quot;)))));</span>
+<span class="nc" id="L64">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

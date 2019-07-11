@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PrestadorServico.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PPROG_1NB_1171343_1161874_TP3</a> &gt; <a href="index.source.html" class="el_package">pprog.tp3.model</a> &gt; <span class="el_source">PrestadorServico.java</span></div><h1>PrestadorServico.java</h1><pre class="source lang-java linenums">package pprog.tp3.model;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ *
+ * @author António (1171343) &amp; João (1161874)
+ */
+public class PrestadorServico extends UtilizadorNaoFuncionario {
+
+    String nomeAbreviado;
+
+    private List&lt;Servico&gt; servicos;
+    private List&lt;AreaGeografica&gt; areasGeograficas;
+    private List&lt;Disponibilidade&gt; disponibilidades;
+
+    /**
+     * O tipo de utilizador
+     */
+<span class="nc" id="L22">    private static final Tipo TIPO = Tipo.PRESTADORSERVICO;</span>
+
+    /**
+     * O nome por omissão do utilizador
+     */
+    private static final String NOME_POR_OMISSAO = &quot;sem nome&quot;;
+
+    /**
+     * O nome abreviado por omissão do prestador
+     */
+    private static final String NOMEABREVIADO_POR_OMISSAO = &quot;sem nome&quot;;
+
+    /**
+     * Inicializa construtor do prestador por omissão
+     */
+    public PrestadorServico() {
+<span class="nc" id="L38">        super();</span>
+<span class="nc" id="L39">        nomeAbreviado = NOMEABREVIADO_POR_OMISSAO;</span>
+<span class="nc" id="L40">        servicos = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L41">        areasGeograficas = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L42">        disponibilidades = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L43">    }</span>
+
+    /**
+     * Inicializa o construtor prestador de serviço com o nome, email, nif e
+     * telefone
+     *
+     * @param nomeCompleto
+     * @param email
+     * @param nif
+     * @param telefone
+     * @param nomeAbreviado
+     */
+    public PrestadorServico(String nomeCompleto, String email, String nif, String telefone, String nomeAbreviado) {
+<span class="nc" id="L56">        super(nomeCompleto, email, TIPO, nif, telefone);</span>
+<span class="nc" id="L57">        this.nomeAbreviado = nomeAbreviado;</span>
+<span class="nc" id="L58">        this.servicos = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L59">        this.areasGeograficas = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L60">        this.disponibilidades = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L61">    }</span>
+
+    /**
+     * Devolve uma lista de serviços do prestador
+     *
+     * @return lista de serviços do prestador
+     */
+    public ArrayList&lt;Servico&gt; getServicos() {
+<span class="nc" id="L69">        return new ArrayList&lt;&gt;(servicos);</span>
+    }
+
+    /**
+     * Insere uma nova lista de serviços
+     *
+     * @param novaListaServicos
+     */
+    public void setServicos(List&lt;Servico&gt; novaListaServicos) {
+<span class="nc" id="L78">        servicos = new ArrayList&lt;&gt;(novaListaServicos);</span>
+<span class="nc" id="L79">    }</span>
+
+    /**
+     * Devolve uma lista das áreas geográficas de atuação do prestador
+     *
+     * @return lista de serviços do prestador
+     */
+    public ArrayList&lt;AreaGeografica&gt; getAreasGeograficas() {
+<span class="nc" id="L87">        return new ArrayList&lt;&gt;(areasGeograficas);</span>
+    }
+
+    /**
+     * Insere uma nova lista de áreas geográficas de atuação do prestador
+     *
+     * @param novaListaAreasGeograficas
+     */
+    public void setAreasGeograficas(List&lt;AreaGeografica&gt; novaListaAreasGeograficas) {
+<span class="nc" id="L96">        areasGeograficas = new ArrayList&lt;&gt;(novaListaAreasGeograficas);</span>
+<span class="nc" id="L97">    }</span>
+
+    /**
+     * Devolve uma lista com as disponibilidades do prestador
+     *
+     * @return lista de disponibilidades do prestador
+     */
+    public ArrayList&lt;Disponibilidade&gt; getDisponibilidades() {
+<span class="nc" id="L105">        return new ArrayList&lt;&gt;(disponibilidades);</span>
+    }
+
+    /**
+     * Insere uma nova lista com as disponibilidades do prestador
+     *
+     * @param novaListaDisponibilidades
+     */
+    public void setDisponibilidades(List&lt;Disponibilidade&gt; novaListaDisponibilidades) {
+<span class="nc" id="L114">        disponibilidades = new ArrayList&lt;&gt;(novaListaDisponibilidades);</span>
+<span class="nc" id="L115">    }</span>
+
+    /**
+     * Insere uma nova disponibilidade do prestador
+     *
+     * @param novaDisponibilidade
+     */
+    public void addDisponibilidades(Disponibilidade novaDisponibilidade) {
+<span class="nc" id="L123">        disponibilidades.add(novaDisponibilidade);</span>
+<span class="nc" id="L124">    }</span>
+
+//    @Override
+    public boolean equals(Utilizador o) {
+        // Inspirado em https://www.sitepoint.com/implement-javas-equals-method-correctly/
+
+        // self check
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        if (this == o) {</span>
+<span class="nc" id="L132">            return true;</span>
+        }
+        // null check
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        if (o == null) {</span>
+<span class="nc" id="L136">            return false;</span>
+        }
+        // type check and cast
+<span class="nc bnc" id="L139" title="All 2 branches missed.">        if (getClass() != o.getClass()) {</span>
+<span class="nc" id="L140">            return false;</span>
+        }
+        // field comparison
+<span class="nc" id="L143">        PrestadorServico obj = (PrestadorServico) o;</span>
+<span class="nc" id="L144">        return (Objects.equals(getEmail(), obj.getEmail()));</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L149">        int hash = 7;</span>
+<span class="nc" id="L150">        hash = 79 * hash + Objects.hashCode(this.getEmail());</span>
+<span class="nc" id="L151">        return hash;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L156">        String str = String.format(super.toString() + &quot;Nome abreviado: %s%n&quot;, nomeAbreviado);</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">        for (Servico servico : servicos) {</span>
+<span class="nc" id="L158">            str += &quot;\nServiço(s):\n&quot; + servico;</span>
+<span class="nc" id="L159">        }</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        for (AreaGeografica areaGeografica : areasGeograficas) {</span>
+<span class="nc" id="L161">            str += &quot;\nZona(s) geográfica(s) de atuação:\n&quot; + areaGeografica;</span>
+<span class="nc" id="L162">        }</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">        for (Disponibilidade disponibilidade : disponibilidades) {</span>
+<span class="nc" id="L164">            str += &quot;\nDisponibilidade:\n&quot; + disponibilidade;</span>
+<span class="nc" id="L165">        }</span>
+<span class="nc" id="L166">        return str;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ListaForEach.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PPROG_1NB_1171343_1161874_TP3</a> &gt; <a href="index.source.html" class="el_package">pprog.tp3.utils</a> &gt; <span class="el_source">ListaForEach.java</span></div><h1>ListaForEach.java</h1><pre class="source lang-java linenums">package pprog.tp3.utils;
+
+import java.util.List;
+import pprog.tp3.model.Disponibilidade;
+import pprog.tp3.model.PedidoPrestacaoServico;
+import pprog.tp3.model.Utilizador;
+
+/**
+ *
+ * @author João (1161874)
+ */
+<span class="nc" id="L12">public class ListaForEach {</span>
+
+    /**
+     * Listagem com pedidos de prestação de serviços
+     *
+     * @param lista - ArrayList
+     */
+    public static void listarPedidos(List&lt;PedidoPrestacaoServico&gt; lista) {
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        for (PedidoPrestacaoServico pedido : lista) {</span>
+<span class="nc" id="L21">            System.out.printf(pedido.toString());</span>
+<span class="nc" id="L22">        }</span>
+<span class="nc" id="L23">    }</span>
+
+    /**
+     * Listagem com os utilizadores da empresa
+     *
+     * @param lista - ArrayList
+     */
+    public static void listarUtilizadores(List&lt;Utilizador&gt; lista) {
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        for (Utilizador utilizador : lista) {</span>
+<span class="nc" id="L32">            System.out.printf(utilizador.toString());</span>
+<span class="nc" id="L33">        }</span>
+<span class="nc" id="L34">    }</span>
+    
+    /**
+     * Listagem com pedidos de prestação de serviços
+     *
+     * @param lista - ArrayList
+     */
+    public static void listarDisponibilidades(List&lt;Disponibilidade&gt; lista) {
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        for (Disponibilidade disponibilidade : lista) {</span>
+<span class="nc" id="L43">            System.out.printf(disponibilidade.toString());</span>
+<span class="nc" id="L44">        }</span>
+<span class="nc" id="L45">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

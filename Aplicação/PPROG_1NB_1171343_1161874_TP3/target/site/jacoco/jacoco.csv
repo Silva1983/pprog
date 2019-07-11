@@ -1,0 +1,55 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.utils,Utils,194,0,16,0,51,0,19,0,11,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.utils,Ficheiro,168,0,12,0,33,0,12,0,6,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.utils,ListaForEach,60,0,6,0,13,0,7,0,4,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,MesInvalidoException,8,0,0,0,4,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,DiaInvalidoException,8,0,0,0,4,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data,379,0,38,0,73,0,43,0,24,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.DiaDaSemana.new Data.DiaDaSemana() {...},8,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.DiaDaSemana.new Data.DiaDaSemana() {...},8,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.DiaDaSemana.new Data.DiaDaSemana() {...},8,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.DiaDaSemana.new Data.DiaDaSemana() {...},8,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.DiaDaSemana.new Data.DiaDaSemana() {...},8,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.DiaDaSemana.new Data.DiaDaSemana() {...},8,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.DiaDaSemana.new Data.DiaDaSemana() {...},8,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.DiaDaSemana,93,0,0,0,9,0,5,0,5,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes.new Data.Mes() {...},9,0,0,0,1,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Data.Mes,174,0,4,0,20,0,8,0,6,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,TempoInvalidoException,8,0,0,0,4,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.biblioteca,Tempo,398,0,38,0,76,0,43,0,24,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.ui,Main,402,0,0,0,35,0,4,0,4,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.ui.console,AutenticacaoUI,54,0,6,0,18,0,8,0,5,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.ui.console,PedidoPrestacaoServicoUI,131,0,4,0,37,0,6,0,4,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.ui.console,MenuPrestadorServicoUI,36,0,5,0,13,0,5,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.ui.console,AtribuirPedidoUI,49,0,4,0,15,0,6,0,4,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.ui.console,MenuAdministrativoUI,34,0,5,0,13,0,5,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.ui.console,MenuClienteUI,36,0,5,0,13,0,5,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.ui.console,IndicarDisponibilidadeUI,130,0,4,0,37,0,6,0,4,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.ui.console,MenuUI.new Object() {...},26,0,0,0,1,0,1,0,1,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.ui.console,MenuUI,104,0,9,0,32,0,9,0,3,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,PrestadorServico,221,0,12,0,46,0,19,0,13,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,Servico,173,0,22,0,45,0,27,0,16,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,AtribuicaoPedido,12,0,0,0,5,0,5,0,5,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,Utilizador.Tipo,48,0,0,0,2,0,4,0,4,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,Administrativo,49,0,6,0,16,0,8,0,5,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,Disponibilidade,95,0,0,0,26,0,11,0,11,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,AreaGeografica,45,0,0,0,19,0,8,0,8,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,UtilizadorNaoFuncionario,73,0,8,0,17,0,11,0,7,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,EnderecoPostal,153,0,24,0,36,0,23,0,11,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,Utilizador,146,0,16,0,40,0,22,0,14,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,CalculoDistancia,63,0,0,0,10,0,2,0,2,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,PedidoPrestacaoServico,113,0,0,0,30,0,13,0,13,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,Empresa,180,0,8,0,49,0,24,0,20,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,Cliente,109,0,10,0,24,0,14,0,9,0
+PPROG_1NB_1171343_1161874_TP3,pprog.tp3.model,Categoria,104,0,14,0,30,0,17,0,10,0

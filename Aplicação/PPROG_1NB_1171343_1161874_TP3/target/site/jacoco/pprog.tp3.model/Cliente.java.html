@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cliente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PPROG_1NB_1171343_1161874_TP3</a> &gt; <a href="index.source.html" class="el_package">pprog.tp3.model</a> &gt; <span class="el_source">Cliente.java</span></div><h1>Cliente.java</h1><pre class="source lang-java linenums">package pprog.tp3.model;
+
+import java.util.Objects;
+
+/**
+ *
+ * @author António (1171343) &amp; João (1161874)
+ */
+public class Cliente extends UtilizadorNaoFuncionario {
+
+    /**
+     * morada do cliente
+     */
+    private EnderecoPostal morada;
+
+    /**
+     * Tipo cliente
+     */
+<span class="nc" id="L19">    private static final Tipo TIPO = Tipo.CLIENTE;</span>
+
+    /**
+     * Inicializa construtor Cliente por omissao
+     */
+    public Cliente() {
+<span class="nc" id="L25">        super();</span>
+<span class="nc" id="L26">        morada = new EnderecoPostal();</span>
+<span class="nc" id="L27">    }</span>
+
+    /**
+     * Inicializa construtor Cliente com nome, email, nif, telefone e morada
+     * 
+     * @param nome - nome cliente
+     * @param email - email do cliente
+     * @param nif - nif do cliente
+     * @param telefone - telefone cliente
+     * @param morada  - morada cliente
+     */
+    public Cliente(String nome, String email, String nif, String telefone, EnderecoPostal morada) {
+<span class="nc" id="L39">        super(nome, email, TIPO, nif, telefone);</span>
+<span class="nc" id="L40">        this.morada = morada;</span>
+<span class="nc" id="L41">    }</span>
+
+    /**
+     * Devolve a morada do cliente
+     *
+     * @return morada do cliente
+     */
+    public EnderecoPostal getMorada() {
+<span class="nc" id="L49">        return morada;</span>
+    }
+
+    /**
+     * Insere uma nova morada do cliente
+     *
+     * @param morada
+     */
+    public void setMoradas(EnderecoPostal morada) {
+<span class="nc" id="L58">        this.morada = morada;</span>
+<span class="nc" id="L59">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+        // Inspirado em https://www.sitepoint.com/implement-javas-equals-method-correctly/
+
+        // self check
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if (this == o) {</span>
+<span class="nc" id="L67">            return true;</span>
+        }
+        // null check
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (o == null) {</span>
+<span class="nc" id="L71">            return false;</span>
+        }
+        // type check and cast
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        if (getClass() != o.getClass()) {</span>
+<span class="nc" id="L75">            return false;</span>
+        }
+        // field comparison
+<span class="nc" id="L78">        Cliente obj = (Cliente) o;</span>
+<span class="nc bnc" id="L79" title="All 4 branches missed.">        return (Objects.equals(getEmail(), obj.getEmail()) || Objects.equals(getNif(), obj.getTelefone()));</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L84">        int hash = 7;</span>
+<span class="nc" id="L85">        hash = 23 * hash + Objects.hashCode(this.getEmail());</span>
+<span class="nc" id="L86">        hash = 79 * hash + Objects.hashCode(this.getNif());</span>
+<span class="nc" id="L87">        return hash;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L92">        return String.format(super.toString() + &quot;Morada: %s%n&quot;, morada);</span>
+    }
+
+    public static EnderecoPostal novoEnderecoPostal(String strLocal, String strCodPostal, String strLocalidade) {
+<span class="nc" id="L96">        return new EnderecoPostal(strLocal, strCodPostal, strLocalidade);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

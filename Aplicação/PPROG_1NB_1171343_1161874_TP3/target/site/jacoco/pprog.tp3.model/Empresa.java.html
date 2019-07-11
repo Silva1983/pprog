@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Empresa.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PPROG_1NB_1171343_1161874_TP3</a> &gt; <a href="index.source.html" class="el_package">pprog.tp3.model</a> &gt; <span class="el_source">Empresa.java</span></div><h1>Empresa.java</h1><pre class="source lang-java linenums">package pprog.tp3.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Representa uma empresa através da sua designação, NIF e utilizadores
+ *
+ * @author João (1161874)
+ */
+public class Empresa {
+
+    /**
+     * Designação da empresa
+     */
+    private String designacao;
+
+    /**
+     * NIF da empresa
+     */
+    private String nif;
+
+    /**
+     * Designação por omissao da empresa
+     */
+    private static final String DESIGNACAO_POR_OMISSAO = &quot;sem designacao&quot;;
+
+    /**
+     * NIF por omissao da empresa
+     */
+    private static final String NIF_POR_OMISSAO = &quot;sem NIF&quot;;
+
+    /**
+     * Inicializa a lista de utilizadores
+     */
+    private List&lt;Utilizador&gt; utilizadores;
+
+    /**
+     * Inicializa a lista de categorias
+     */
+    private List&lt;Categoria&gt; categorias;
+
+    /**
+     * Inicializa a lista de serviços
+     */
+    private List&lt;Servico&gt; servicos;
+
+    /**
+     * Inicializa os pedidos de prestção de serviço
+     */
+    private List&lt;PedidoPrestacaoServico&gt; pedidosPrestacaoServico;
+
+    /**
+     * Inicializa o construtor da empresa
+     */
+<span class="nc" id="L56">    public Empresa() {</span>
+<span class="nc" id="L57">        designacao = DESIGNACAO_POR_OMISSAO;</span>
+<span class="nc" id="L58">        nif = NIF_POR_OMISSAO;</span>
+<span class="nc" id="L59">        utilizadores = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L60">        servicos = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L61">        pedidosPrestacaoServico = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L62">    }</span>
+
+    /**
+     * Inicializa o construtor empresa com a designação, NIF, lista de
+     * utilizadores, catero
+     *
+     * @param designacao - designacao da empresa
+     * @param nif - NIF da empresa
+     * utilizadores - arraylist com os utilizadores da empresa
+     * servicos - arraylist com os serviços da empresa
+     * pedidosPrestacaoServico - pedidos de prestação de serviço
+     */
+<span class="nc" id="L74">    public Empresa(String designacao, String nif) {</span>
+<span class="nc" id="L75">        this.designacao = designacao;</span>
+<span class="nc" id="L76">        this.nif = nif;</span>
+<span class="nc" id="L77">        this.utilizadores = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L78">        this.servicos = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L79">        this.pedidosPrestacaoServico = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L80">    }</span>
+
+    /**
+     * Devolve a designação da empresa
+     *
+     * @return designacao da empresa
+     */
+    public String getDesignacao() {
+<span class="nc" id="L88">        return designacao;</span>
+    }
+
+    /**
+     * Modifica a designação da empresa
+     *
+     * @param designacao - novo designacao da empresa
+     */
+    public void setDesignacao(String designacao) {
+<span class="nc" id="L97">        this.designacao = designacao;</span>
+<span class="nc" id="L98">    }</span>
+
+    /**
+     * Devolve o NIF da empresa
+     *
+     * @return nif da empresa
+     */
+    public String getNif() {
+<span class="nc" id="L106">        return nif;</span>
+    }
+
+    /**
+     * Modifica o NIF da empresa
+     *
+     * @param nif - novo nif da empresa
+     */
+    public void setNif(String nif) {
+<span class="nc" id="L115">        this.nif = nif;</span>
+<span class="nc" id="L116">    }</span>
+
+    /**
+     * Devolve uma lista com todos os utilizadores da empresa
+     *
+     * @return lista dos utilizadores da empresa
+     */
+    public List&lt;Utilizador&gt; getUtilizadores() {
+<span class="nc" id="L124">        return utilizadores;</span>
+    }
+
+    /**
+     * Insere uma nova lista de utilizadores
+     *
+     * @param utilizadores
+     */
+    public void setUtilizadores(List&lt;Utilizador&gt; utilizadores) {
+<span class="nc" id="L133">        this.utilizadores = utilizadores;</span>
+<span class="nc" id="L134">    }</span>
+
+    /**
+     * Devolve uma lista com todas as categorias da empresa
+     *
+     * @return lista das categorias da empresa
+     */
+    public ArrayList&lt;Categoria&gt; getCategorias() {
+<span class="nc" id="L142">        return new ArrayList&lt;&gt;(categorias);</span>
+    }
+
+    /**
+     * Insere uma nova lista de categorias
+     *
+     * @param novaListaCategorias
+     */
+    public void setCategorias(List&lt;Categoria&gt; novaListaCategorias) {
+<span class="nc" id="L151">        categorias = new ArrayList&lt;&gt;(novaListaCategorias);</span>
+<span class="nc" id="L152">    }</span>
+
+    /**
+     * Devolve uma lista com todos os serviços da empresa
+     *
+     * @return lista dos serviços da empresa
+     */
+    public ArrayList&lt;Servico&gt; getServicos() {
+<span class="nc" id="L160">        return new ArrayList&lt;&gt;(servicos);</span>
+    }
+
+    /**
+     * Insere uma nova lista de serviços
+     *
+     * @param novaListaServicos
+     */
+    public void setServicos(List&lt;Servico&gt; novaListaServicos) {
+<span class="nc" id="L169">        servicos = new ArrayList&lt;&gt;(novaListaServicos);</span>
+<span class="nc" id="L170">    }</span>
+
+    public List&lt;PedidoPrestacaoServico&gt; getPedidosPrestacaoServico() {
+<span class="nc" id="L173">        return pedidosPrestacaoServico;</span>
+    }
+
+    public void setPedidosPrestacaoServico(List&lt;PedidoPrestacaoServico&gt; pedidosPrestacaoServico) {
+<span class="nc" id="L177">        this.pedidosPrestacaoServico = pedidosPrestacaoServico;</span>
+<span class="nc" id="L178">    }</span>
+
+    /**
+     * Devolve a informação da empresa
+     *
+     * @return designacao
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L187">        return String.format(&quot;%nEmpresa: %s%nNIF: %s%n&quot;, designacao, nif);</span>
+    }
+
+    /**
+     * Adiciona um utilizador à empresa
+     *
+     * @param novoUtilizador
+     */
+    public void addUtilizador(Utilizador novoUtilizador) {
+<span class="nc" id="L196">        utilizadores.add(novoUtilizador);</span>
+<span class="nc" id="L197">    }</span>
+    
+    public void addServico(Servico novoServico) {
+<span class="nc" id="L200">        servicos.add(novoServico);</span>
+<span class="nc" id="L201">    }</span>
+    
+    public void addPedidoPrestacaoServico(PedidoPrestacaoServico pedidoPrestacaoServico) {
+<span class="nc" id="L204">        pedidosPrestacaoServico.add(pedidoPrestacaoServico);</span>
+<span class="nc" id="L205">    }</span>
+
+    /**
+     * Verifica se existe um utilizador com o email inserido
+     *
+     * @param email do utilizador
+     * @return resultado
+     */
+    public boolean checkUtilizadorByEmail(String email) {
+<span class="nc bnc" id="L214" title="All 2 branches missed.">        for (Utilizador utilizador : utilizadores) {</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">            if (utilizador.getEmail().equalsIgnoreCase(email)) {</span>
+<span class="nc" id="L216">                return true;</span>
+            }
+<span class="nc" id="L218">        }</span>
+<span class="nc" id="L219">        return false;</span>
+    }
+
+    /**
+     * Pesquisa o utilizador através do email
+     *
+     * @param email do prestador
+     * @return utilizador
+     */
+    public int getUtilizadorByEmail(String email) {
+<span class="nc bnc" id="L229" title="All 2 branches missed.">        for (Utilizador utilizador : utilizadores) {</span>
+<span class="nc bnc" id="L230" title="All 2 branches missed.">            if (utilizador.getEmail().equalsIgnoreCase(email)) {</span>
+<span class="nc" id="L231">                return utilizadores.indexOf(utilizador);</span>
+            }
+<span class="nc" id="L233">        }</span>
+<span class="nc" id="L234">        return -1;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

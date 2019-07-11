@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Utils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PPROG_1NB_1171343_1161874_TP3</a> &gt; <a href="index.source.html" class="el_package">pprog.tp3.utils</a> &gt; <span class="el_source">Utils.java</span></div><h1>Utils.java</h1><pre class="source lang-java linenums">package pprog.tp3.utils;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ * Métodos para permitir a introdução e demonstração de dados na consola.
+ *
+ * @author Paulo Maio &lt;pam@isep.ipp.pt&gt;
+ */
+<span class="nc" id="L17">public class Utils {</span>
+
+    
+    
+    static public String readLineFromConsole(String strPrompt) {
+        try {
+<span class="nc" id="L23">            System.out.println(&quot;\n&quot; + strPrompt);</span>
+
+<span class="nc" id="L25">            InputStreamReader converter = new InputStreamReader(System.in);</span>
+<span class="nc" id="L26">            BufferedReader in = new BufferedReader(converter);</span>
+
+<span class="nc" id="L28">            return in.readLine();</span>
+<span class="nc" id="L29">        } catch (Exception e) {</span>
+<span class="nc" id="L30">            e.printStackTrace();</span>
+<span class="nc" id="L31">            return null;</span>
+        }
+    }
+
+    static public int readIntegerFromConsole(String strPrompt) {
+        do {
+            try {
+<span class="nc" id="L38">                String strInt = readLineFromConsole(strPrompt);</span>
+
+<span class="nc" id="L40">                int iValor = Integer.parseInt(strInt);</span>
+
+<span class="nc" id="L42">                return iValor;</span>
+<span class="nc" id="L43">            } catch (NumberFormatException ex) {</span>
+<span class="nc" id="L44">                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);</span>
+            }
+<span class="nc" id="L46">        } while (true);</span>
+    }
+
+    static public double readDoubleFromConsole(String strPrompt) {
+        do {
+            try {
+<span class="nc" id="L52">                String strDouble = readLineFromConsole(strPrompt);</span>
+
+<span class="nc" id="L54">                double dValor = Double.parseDouble(strDouble);</span>
+
+<span class="nc" id="L56">                return dValor;</span>
+<span class="nc" id="L57">            } catch (NumberFormatException ex) {</span>
+<span class="nc" id="L58">                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);</span>
+            }
+<span class="nc" id="L60">        } while (true);</span>
+    }
+
+    static public Date readDateFromConsole(String strPrompt) {
+        do {
+            try {
+<span class="nc" id="L66">                String strDate = readLineFromConsole(strPrompt);</span>
+
+<span class="nc" id="L68">                SimpleDateFormat df = new SimpleDateFormat(&quot;dd-MM-yyyy&quot;);</span>
+
+<span class="nc" id="L70">                Date date = df.parse(strDate);</span>
+
+<span class="nc" id="L72">                return date;</span>
+<span class="nc" id="L73">            } catch (ParseException ex) {</span>
+<span class="nc" id="L74">                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);</span>
+            }
+<span class="nc" id="L76">        } while (true);</span>
+    }
+
+    static public boolean confirma(String sMessage) {
+        String strConfirma;
+        do {
+<span class="nc" id="L82">            strConfirma = Utils.readLineFromConsole(&quot;\n&quot; + sMessage + &quot;\n&quot;);</span>
+<span class="nc bnc" id="L83" title="All 4 branches missed.">        } while (!strConfirma.equalsIgnoreCase(&quot;s&quot;) &amp;&amp; !strConfirma.equalsIgnoreCase(&quot;n&quot;));</span>
+
+<span class="nc" id="L85">        return strConfirma.equalsIgnoreCase(&quot;s&quot;);</span>
+    }
+
+    static public Object apresentaESeleciona(List list, String sHeader) {
+<span class="nc" id="L89">        apresentaLista(list, sHeader);</span>
+<span class="nc" id="L90">        return selecionaObject(list);</span>
+    }
+
+    static public int apresentaESelecionaIndex(List list, String sHeader) {
+<span class="nc" id="L94">        apresentaLista(list, sHeader);</span>
+<span class="nc" id="L95">        return selecionaIndex(list);</span>
+    }
+
+    static public void apresentaLista(List list, String sHeader) {
+<span class="nc" id="L99">        System.out.println(sHeader);</span>
+
+<span class="nc" id="L101">        int index = 0;</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        for (Object o : list) {</span>
+<span class="nc" id="L103">            index++;</span>
+
+<span class="nc" id="L105">            System.out.println(index + &quot;. &quot; + o.toString());</span>
+<span class="nc" id="L106">        }</span>
+<span class="nc" id="L107">    }</span>
+
+    static public Object selecionaObject(List list) {
+        String opcao;
+        int nOpcao;
+        do {
+<span class="nc" id="L113">            opcao = Utils.readLineFromConsole(&quot;Introduza opção: &quot;);</span>
+<span class="nc" id="L114">            nOpcao = new Integer(opcao);</span>
+<span class="nc bnc" id="L115" title="All 4 branches missed.">        } while (nOpcao &lt; 0 || nOpcao &gt; list.size());</span>
+
+<span class="nc bnc" id="L117" title="All 2 branches missed.">        if (nOpcao == 0) {</span>
+<span class="nc" id="L118">            return null;</span>
+        } else {
+<span class="nc" id="L120">            return list.get(nOpcao);</span>
+        }
+    }
+
+    static public int selecionaIndex(List list) {
+        String opcao;
+        int nOpcao;
+        do {
+<span class="nc" id="L128">            opcao = Utils.readLineFromConsole(&quot;Introduza opção: &quot;);</span>
+<span class="nc" id="L129">            nOpcao = new Integer(opcao);</span>
+<span class="nc bnc" id="L130" title="All 4 branches missed.">        } while (nOpcao &lt; 0 || nOpcao &gt; list.size());</span>
+
+<span class="nc" id="L132">        return nOpcao;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

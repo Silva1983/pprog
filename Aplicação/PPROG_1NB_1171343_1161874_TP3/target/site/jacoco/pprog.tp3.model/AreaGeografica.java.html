@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AreaGeografica.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PPROG_1NB_1171343_1161874_TP3</a> &gt; <a href="index.source.html" class="el_package">pprog.tp3.model</a> &gt; <span class="el_source">AreaGeografica.java</span></div><h1>AreaGeografica.java</h1><pre class="source lang-java linenums">package pprog.tp3.model;
+
+/**
+ * Representa uma área geográfica através da sua designação, custo de deslocação
+ * e código postal
+ *
+ * @author João (1161874)
+ */
+public class AreaGeografica {
+
+    String designacao;
+    float custoDeslocacao;
+    String codigoPostal;
+
+    /**
+     * A designação por omissão
+     */
+    private static final String DESIGNACAO_POR_OMISSAO = &quot;sem designação&quot;;
+
+    /**
+     * O custo de deslocação por omissão
+     */
+    private static final float CUSTODESLOCACAO_POR_OMISSAO = 0;
+
+    /**
+     * O código postal por omissão
+     */
+    private static final String CODIGOPOSTAL_POR_OMISSAO = &quot;sem código postal&quot;;
+
+    /**
+     * Inicializa contrutor da Area Geografica por omissão
+     */
+<span class="nc" id="L33">    public AreaGeografica() {</span>
+<span class="nc" id="L34">        designacao = DESIGNACAO_POR_OMISSAO;</span>
+<span class="nc" id="L35">        custoDeslocacao = CUSTODESLOCACAO_POR_OMISSAO;</span>
+<span class="nc" id="L36">        codigoPostal = CODIGOPOSTAL_POR_OMISSAO;</span>
+<span class="nc" id="L37">    }</span>
+
+    /**
+     * Inicializa construtor da área geográfica com a designação, custo de
+     * deslocação e código postal
+     *
+     * @param designacao - designação da área geográfica
+     * @param custoDeslocacao - custo deslocação
+     * @param codigoPostal -código postal
+     */
+<span class="nc" id="L47">    public AreaGeografica(String designacao, float custoDeslocacao, String codigoPostal) {</span>
+<span class="nc" id="L48">        this.designacao = designacao;</span>
+<span class="nc" id="L49">        this.custoDeslocacao = custoDeslocacao;</span>
+<span class="nc" id="L50">        this.codigoPostal = codigoPostal;</span>
+<span class="nc" id="L51">    }</span>
+
+    /**
+     * Devolve a Designação
+     *
+     * @return designação da área geográfica
+     */
+    public String getDesignacao() {
+<span class="nc" id="L59">        return designacao;</span>
+    }
+
+    /**
+     * Modifica a designação da área geográfica
+     *
+     * @param designacao nova designação
+     */
+    public void setDesignacao(String designacao) {
+<span class="nc" id="L68">        this.designacao = designacao;</span>
+<span class="nc" id="L69">    }</span>
+
+    /**
+     * Devolve o custo da deslocação
+     *
+     * @return custo da deslocação
+     */
+    public float getCustoDeslocacao() {
+<span class="nc" id="L77">        return custoDeslocacao;</span>
+    }
+
+    /**
+     * Modifica o custo da deslocação
+     *
+     * @param custoDeslocacao novo custo de deslocação
+     */
+    public void setCustoDeslocacao(float custoDeslocacao) {
+<span class="nc" id="L86">        this.custoDeslocacao = custoDeslocacao;</span>
+<span class="nc" id="L87">    }</span>
+
+    /**
+     * Devolve o código postal
+     *
+     * @return código postal
+     */
+    public String getCodigoPostal() {
+<span class="nc" id="L95">        return codigoPostal;</span>
+    }
+
+    /**
+     * Modifica o código postal
+     *
+     * @param codigoPostal novo código postal
+     */
+    public void setCodigoPostal(String codigoPostal) {
+<span class="nc" id="L104">        this.codigoPostal = codigoPostal;</span>
+<span class="nc" id="L105">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

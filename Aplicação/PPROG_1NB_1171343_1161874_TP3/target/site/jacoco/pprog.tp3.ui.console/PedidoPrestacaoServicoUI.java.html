@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PedidoPrestacaoServicoUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PPROG_1NB_1171343_1161874_TP3</a> &gt; <a href="index.source.html" class="el_package">pprog.tp3.ui.console</a> &gt; <span class="el_source">PedidoPrestacaoServicoUI.java</span></div><h1>PedidoPrestacaoServicoUI.java</h1><pre class="source lang-java linenums">package pprog.tp3.ui.console;
+
+import pprog.tp3.model.*;
+import pprog.tp3.utils.Utils;
+import pprog.tp3.biblioteca.*;
+import pprog.tp3.utils.ListaForEach;
+
+/**
+ *
+ * @author João (1161874)
+ */
+public class PedidoPrestacaoServicoUI {
+
+  
+<span class="nc" id="L15">    public PedidoPrestacaoServicoUI() {</span>
+<span class="nc" id="L16">    }</span>
+    
+    public void run(Empresa empresa, int indexUtilizador) {
+<span class="nc" id="L19">        PedidoPrestacaoServico newPedido = introduzDados(((Cliente) empresa.getUtilizadores().get(indexUtilizador)));</span>
+<span class="nc" id="L20">        apresentaDados(newPedido);</span>
+
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        if (Utils.confirma(&quot;Confirma os dados introduzidos? (S/N)&quot;)) {</span>
+            //teste
+<span class="nc" id="L24">            System.out.println(((Cliente) empresa.getUtilizadores().get(indexUtilizador)));</span>
+
+<span class="nc" id="L26">            empresa.addPedidoPrestacaoServico(newPedido);</span>
+            //teste
+<span class="nc" id="L28">            ListaForEach.listarPedidos(empresa.getPedidosPrestacaoServico());</span>
+
+<span class="nc" id="L30">            System.out.println(&quot;Registo efetuado com sucesso.&quot;);</span>
+        } else {
+<span class="nc" id="L32">            System.out.println(&quot;Operação cancelada.&quot;);</span>
+        }
+<span class="nc" id="L34">    }</span>
+    
+
+    private PedidoPrestacaoServico introduzDados(Cliente cliente) {
+<span class="nc" id="L38">        Data dataPreferencia = new Data();</span>
+<span class="nc" id="L39">        Tempo tempoPreferencia = new Tempo();</span>
+<span class="nc" id="L40">        Tempo duracao = new Tempo();</span>
+<span class="nc" id="L41">        boolean dadosInvalidos = true;</span>
+        do {
+            try {
+<span class="nc" id="L44">                dataPreferencia.setDia(Integer.parseInt(Utils.readLineFromConsole(&quot;Insira o dia pretendido&quot;)));</span>
+<span class="nc" id="L45">                dataPreferencia.setMes(Integer.parseInt(Utils.readLineFromConsole(&quot;Insira o mês pretendido&quot;)));</span>
+<span class="nc" id="L46">                tempoPreferencia.setHoras(Integer.parseInt(Utils.readLineFromConsole(&quot;Insira a hora de início do pedido&quot;)));</span>
+<span class="nc" id="L47">                tempoPreferencia.setMinutos(Integer.parseInt(Utils.readLineFromConsole(&quot;Insira os minutos do pedido&quot;)));</span>
+<span class="nc" id="L48">                System.out.println(&quot;Insira o tempo de duração do pedido...&quot;);</span>
+<span class="nc" id="L49">                duracao.setHoras(Integer.parseInt(Utils.readLineFromConsole(&quot;Quantas horas?&quot;)));</span>
+<span class="nc" id="L50">                duracao.setMinutos(Integer.parseInt(Utils.readLineFromConsole(&quot;Quantos minutos?&quot;)));</span>
+                
+<span class="nc" id="L52">                dadosInvalidos = false;</span>
+<span class="nc" id="L53">            } catch (DiaInvalidoException e) {</span>
+<span class="nc" id="L54">                System.out.println(&quot;Dia inválido!&quot;);</span>
+<span class="nc" id="L55">            } catch (MesInvalidoException e) {</span>
+<span class="nc" id="L56">                System.out.println(&quot;Mês inválido!&quot;);</span>
+<span class="nc" id="L57">            } catch (TempoInvalidoException e) {</span>
+<span class="nc" id="L58">                System.out.println(&quot;Tempo inválido!&quot;);</span>
+<span class="nc" id="L59">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L60">                System.out.println(&quot;Erro! Não é um valor inteiro!&quot;);</span>
+<span class="nc" id="L61">            }</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        } while (dadosInvalidos);</span>
+
+<span class="nc" id="L64">        PedidoPrestacaoServico pedido = new PedidoPrestacaoServico(cliente, dataPreferencia, tempoPreferencia, duracao);</span>
+<span class="nc" id="L65">        return pedido;</span>
+    }
+    
+    private void apresentaDados(PedidoPrestacaoServico pedido) {
+<span class="nc" id="L69">        System.out.println(&quot;\n&quot; + pedido.toString());</span>
+<span class="nc" id="L70">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
