@@ -69,6 +69,9 @@ public abstract class Software {
         return new ArrayList<>(programas);
     }
 
+    public String getDescricao(){
+        return String.format(this.getNome() + " : " + this.getAcronimo());
+    }
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -89,6 +92,5 @@ public abstract class Software {
         }
         return true;
     }
-    
     
 }

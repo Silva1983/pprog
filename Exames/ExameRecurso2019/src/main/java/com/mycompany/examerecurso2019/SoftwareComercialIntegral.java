@@ -6,12 +6,13 @@
 package com.mycompany.examerecurso2019;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
  * @author ssilv
  */
-public class SoftwareComercialIntegral extends Software{
+public class SoftwareComercialIntegral extends Software implements Experimentavel{
     private String nomeEmpresa;
     private float duracaoLicenca;
     private float preco;
@@ -33,5 +34,51 @@ public class SoftwareComercialIntegral extends Software{
         this.duracaoLicenca = duracaoLicenca;
         this.preco = preco;
     }
+
+    public String getNomeEmpresa() {
+        return nomeEmpresa;
+    }
+
+    public void setNomeEmpresa(String nomeEmpresa) {
+        this.nomeEmpresa = nomeEmpresa;
+    }
+
+    public float getDuracaoLicenca() {
+        return duracaoLicenca;
+    }
+
+    public void setDuracaoLicenca(float duracaoLicenca) {
+        this.duracaoLicenca = duracaoLicenca;
+    }
+
+    public float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SoftwareComercialIntegral other = (SoftwareComercialIntegral) obj;
+        if (!Objects.equals(this.nomeEmpresa, other.nomeEmpresa)) {
+            return false;
+        }
+        if (Float.floatToIntBits(this.duracaoLicenca) != Float.floatToIntBits(other.duracaoLicenca)) {
+            return false;
+        }
+        if (Float.floatToIntBits(this.preco) != Float.floatToIntBits(other.preco)) {
+            return false;
+        }
+        return true;
+    }
+    
     
 }

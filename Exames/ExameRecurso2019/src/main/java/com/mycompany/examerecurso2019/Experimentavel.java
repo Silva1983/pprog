@@ -10,5 +10,6 @@ package com.mycompany.examerecurso2019;
  * @author ssilv
  */
 public interface Experimentavel {
+     String getNome();
     
 }
